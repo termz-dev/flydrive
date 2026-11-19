@@ -3,7 +3,8 @@ import { LocationPage } from "@/ui/LocationPage";
 
 export const metadata: Metadata = {
   title: "Drivers in Lagos",
-  description: "Arrange a vetted professional driver for your own car in Lagos with Flydrive.",
+  description:
+    "Book a vetted professional driver in Lagos with Flydrive — for your own car, or car + driver.",
   alternates: { canonical: "/locations/lagos" },
 };
 

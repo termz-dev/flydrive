@@ -33,6 +33,10 @@ export default async function PackagePage({ params }: { params: Promise<Params> 
         {pkg.description.map((para) => (
           <p key={para}>{para}</p>
         ))}
+        <p>
+          Available driver-only for your own car, or as{" "}
+          <Link href="/services/car-and-driver">car + driver</Link>.
+        </p>
         <h3>Good for</h3>
         <ul className="tag-list">
           {pkg.suitedTo.map((s) => (
@@ -48,7 +52,7 @@ export default async function PackagePage({ params }: { params: Promise<Params> 
           ))}
         </ul>
         <p className="muted">
-          Fuel, tolls, parking and washing are paid by the customer during every booking.
+          On driver-only bookings, fuel, tolls, parking and washing are paid by the customer.
         </p>
       </Section>
       <Section>

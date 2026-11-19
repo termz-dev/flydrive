@@ -9,7 +9,7 @@ const pageFile = (route: string) =>
   path.join(APP, "(public)", route === "/" ? "" : route, "page.tsx");
 
 describe("public routes", () => {
-  it("covers every PRD §4 route", () => {
+  it("covers every PRD §4 route plus car + driver (ADR 0002)", () => {
     expect([...PUBLIC_ROUTES].sort()).toEqual(
       [
         "/",
@@ -24,6 +24,7 @@ describe("public routes", () => {
         "/locations/lagos",
         "/privacy",
         "/services",
+        "/services/car-and-driver",
         "/terms",
         "/trust-and-safety",
       ].sort(),
@@ -57,5 +58,19 @@ describe("service catalogue", () => {
       const text = JSON.stringify(p);
       expect(text).not.toMatch(/₦|NGN|naira|\d+\s*(hours?|hrs?)\b/i);
     }
+  });
+});
+
+describe("navigation state", () => {
+  it("marks the right section as current", async () => {
+    const { isCurrent, PRIMARY_NAV } = await import("@/ui/site");
+    const current = (path: string) =>
+      PRIMARY_NAV.filter((i) => isCurrent(path, i)).map((i) => i.label);
+    expect(current("/services")).toEqual(["Services"]);
+    expect(current("/services/weekly")).toEqual(["Services"]);
+    expect(current("/services/car-and-driver")).toEqual(["Car + driver"]);
+    expect(current("/locations/ibadan")).toEqual(["Locations"]);
+    expect(current("/drivers/apply")).toEqual(["Drive with us"]);
+    expect(current("/about")).toEqual([]);
   });
 });

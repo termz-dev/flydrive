@@ -5,27 +5,31 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
-        <div>
+        <div className="footer-about">
           <p className="footer-brand">{SITE_NAME}</p>
-          <p className="muted">{SITE_TAGLINE}</p>
+          <p>{SITE_TAGLINE}</p>
+          <Link href="/contact" className="button button-amber button-small">
+            Contact us
+          </Link>
         </div>
-        {FOOTER_NAV.map((group) => (
-          <nav key={group.heading} aria-label={group.heading}>
-            <h2 className="footer-heading">{group.heading}</h2>
-            <ul>
-              {group.items.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href}>{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ))}
+        <div className="footer-cols">
+          {FOOTER_NAV.map((group) => (
+            <nav key={group.heading} aria-label={group.heading}>
+              <h2 className="footer-heading">{group.heading}</h2>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href}>{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
       </div>
       <div className="container footer-base">
-        <p className="muted">
-          © {new Date().getFullYear()} {SITE_NAME}. Online booking is not open yet.
-        </p>
+        <p>© 2026 {SITE_NAME}</p>
+        <p>Online booking is not open yet. Support hours will be published before launch.</p>
       </div>
     </footer>
   );

@@ -15,10 +15,10 @@ export default function DriversPage() {
       <PageHeader
         eyebrow="For drivers"
         title="Drive with Flydrive"
-        lead="Flydrive matches professional drivers with car owners who need a driver for a set period — from a half-day to a month or more."
+        lead="Flydrive matches professional drivers with customers who need a driver for a set period — in their own car or one we arrange — from a half-day to a month or more."
       >
         <div className="button-row">
-          <Link className="button" href="/drivers/apply">
+          <Link className="button button-amber" href="/drivers/apply">
             How to apply
           </Link>
         </div>

@@ -2,6 +2,10 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { getConfig } from "@/platform/config";
 import { SITE_NAME, SITE_TAGLINE } from "@/ui/site";
+import "@fontsource-variable/inter/wght.css";
+import "@fontsource/space-grotesk/latin-500.css";
+import "@fontsource/space-grotesk/latin-600.css";
+import "@fontsource/space-grotesk/latin-700.css";
 import "./globals.css";
 
 export function generateMetadata(): Metadata {
@@ -16,7 +20,7 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export const viewport: Viewport = { themeColor: "#0b6e4f", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#0e1a2b", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

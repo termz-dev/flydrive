@@ -1,101 +1,166 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SERVICE_PACKAGES } from "@/modules/catalog/packages";
-import { CardGrid, LinkCard, Section, Steps } from "@/ui/blocks";
+import { Banner, CardGrid, CheckList, LinkCard, Section, Steps } from "@/ui/blocks";
+import { CarIcon, Clock, PersonIcon } from "@/ui/icons";
 
 export const metadata: Metadata = {
-  title: { absolute: "Flydrive — vetted professional drivers for your own car" },
+  title: { absolute: "Flydrive — vetted professional drivers in Lagos & Ibadan" },
   description:
-    "Flydrive arranges a vetted professional driver for your own car, for a half-day, a day, a week or longer, in Lagos and Ibadan.",
+    "Flydrive arranges a vetted professional driver in Lagos and Ibadan — for your own car, or with a car we arrange — by the half-day, day, week or longer.",
   alternates: { canonical: "/" },
 };
 
 export default function HomePage() {
   return (
     <>
-      <section className="page-header hero">
-        <div className="container narrow">
-          <p className="eyebrow">Lagos · Ibadan · Pilot in preparation</p>
-          <h1>A vetted professional driver for your own car</h1>
+      <section className="hero">
+        <div className="container">
+          <p className="eyebrow" style={{ color: "var(--amber)" }}>
+            Lagos · Ibadan
+          </p>
+          <h1>A vetted professional driver — in your car, or in one we arrange.</h1>
           <p className="lead">
-            Flydrive arranges a screened driver to drive your vehicle for an agreed period — a
-            half-day, a full day, a week or longer. You choose the driver, the driver accepts the
-            job, and our operations team confirms the booking.
+            Book by the half-day, day, week or longer. We screen every driver, you choose who you
+            want, and nothing is confirmed until your payment is verified.
           </p>
-          <p className="muted">
-            This is not ride-hailing: the car is yours and the time is booked.
-          </p>
-          <div className="button-row">
-            <Link className="button" href="/how-it-works">
-              See how it works
+          <div className="choice-grid">
+            <Link href="/services" className="choice">
+              <span className="choice-icon">
+                <PersonIcon />
+              </span>
+              <span className="choice-kicker">I have a car</span>
+              <span className="choice-title">Driver for your car</span>
+              <span className="choice-body">
+                A screened driver works your schedule in your own vehicle.
+              </span>
+              <span className="choice-more">See packages →</span>
             </Link>
-            <Link className="button button-secondary" href="/services">
-              Explore services
+            <Link href="/services/car-and-driver" className="choice choice-amber">
+              <span className="choice-icon">
+                <CarIcon />
+              </span>
+              <span className="choice-kicker">I need a car too</span>
+              <span className="choice-title">Car + driver</span>
+              <span className="choice-body">
+                We arrange a suitable car and a vetted driver together — ideal for visitors and
+                events.
+              </span>
+              <span className="choice-more">How car + driver works →</span>
             </Link>
           </div>
+          <p className="hero-note">
+            <Clock />
+            <span>
+              Standard notice is 3 days. Need someone sooner? Our team checks availability by hand —
+              we never auto-confirm a short-notice request.
+            </span>
+          </p>
         </div>
       </section>
 
-      <Section title="Who Flydrive is for" id="who">
-        <ul>
-          <li>Car owners who would rather not drive in traffic, to events or on long trips.</li>
-          <li>Households and professionals who need a dependable driver for a week or a month.</li>
-          <li>People covering for a regular driver who is away.</li>
-          <li>
-            Visitors who have access to a car but no driver —{" "}
-            <Link href="/for-visitors">read what we can and can&apos;t do for visitors</Link>.
-          </li>
-        </ul>
-      </Section>
-
-      <Section title="How a booking works" tone="tint" id="steps">
-        <Steps
-          items={[
-            { title: "You request", body: <p>Tell us the dates, pickup point, duties and car.</p> },
-            {
-              title: "You choose a driver",
-              body: <p>We show suitable drivers. You pick the one you prefer.</p>,
-            },
-            {
-              title: "The driver accepts",
-              body: (
-                <p>The driver sees the full job before agreeing. Nothing is charged before this.</p>
-              ),
-            },
-            {
-              title: "You pay and we confirm",
-              body: (
-                <p>Once payment is received and checked by our team, your booking is confirmed.</p>
-              ),
-            },
-          ]}
-        />
-        <p>
-          <Link href="/how-it-works">Read the full process</Link>
-        </p>
-      </Section>
-
-      <Section title="Services" id="services">
-        <p>Choose a package that matches how long you need a driver.</p>
+      <Section
+        wide
+        id="packages"
+        eyebrow="Packages"
+        title="Booked by duration, not by trip."
+        intro="Flydrive isn't ride hailing. Every package is available as driver-only or car + driver."
+        link={{ href: "/services", label: "Compare all packages" }}
+      >
         <CardGrid>
           {SERVICE_PACKAGES.map((p) => (
-            <LinkCard key={p.slug} href={`/services/${p.slug}`} title={p.name}>
+            <LinkCard
+              key={p.slug}
+              href={`/services/${p.slug}`}
+              title={p.name}
+              dashed={p.slug === "custom"}
+            >
               {p.summary}
             </LinkCard>
           ))}
         </CardGrid>
       </Section>
 
-      <Section title="Built around trust" tone="tint" id="trust">
-        <p>
-          Drivers must pass identity, driver&apos;s licence and guarantor checks before they can be
-          offered to customers. Before you pay, you see only limited profile details; more is shared
-          once your booking is confirmed.
-        </p>
-        <p>
-          <Link href="/trust-and-safety">How we approach trust and safety</Link>
-        </p>
+      <Section
+        wide
+        id="how"
+        eyebrow="How it works"
+        title="Every step is a real check, not a promise."
+        link={{ href: "/how-it-works", label: "The full process" }}
+      >
+        <Steps
+          items={[
+            {
+              title: "Tell us what you need",
+              body: <p>Dates, area, duties — and whether you need a car.</p>,
+            },
+            {
+              title: "Choose your driver",
+              body: <p>They see the full assignment and accept or decline.</p>,
+            },
+            {
+              title: "Pay, then we confirm",
+              body: <p>We verify your payment before anything is confirmed.</p>,
+            },
+            {
+              title: "Handover & go",
+              body: <p>The car&apos;s condition is recorded by both sides.</p>,
+            },
+          ]}
+        />
       </Section>
+
+      <section className="section section-tint" aria-labelledby="trust-heading">
+        <div className="container two-col" style={{ alignItems: "center", gap: "56px" }}>
+          <div>
+            <p className="eyebrow">Trust &amp; safety</p>
+            <h2 id="trust-heading">Screened before they ever see a booking.</h2>
+            <p className="lead" style={{ fontSize: "1.0625rem" }}>
+              Identity, licence and guarantor checks for every driver. A named Flydrive handler for
+              every confirmed booking.
+            </p>
+            <Link href="/trust-and-safety" className="section-link">
+              How we vet drivers →
+            </Link>
+          </div>
+          <CheckList
+            items={[
+              { label: "Identity verified" },
+              { label: "Licence checked" },
+              { label: "Guarantor on file" },
+              { label: "Background check", note: "Process being finalised" },
+            ]}
+          />
+        </div>
+      </section>
+
+      <Section wide id="cities" title="Where we operate">
+        <div className="city-grid">
+          <Link href="/locations/lagos" className="city">
+            <span className="city-name">Lagos</span>
+            <span className="city-sub">Island, Mainland and beyond →</span>
+          </Link>
+          <Link href="/locations/ibadan" className="city city-blue">
+            <span className="city-name">Ibadan</span>
+            <span className="city-sub">Across the city →</span>
+          </Link>
+        </div>
+      </Section>
+
+      <div className="container" style={{ display: "grid", gap: 24, paddingBottom: 96 }}>
+        <Banner
+          tone="cream"
+          title="Visiting Lagos or Ibadan?"
+          body="Car + driver covers your whole stay — business trips, weddings, family visits. Tell us your dates and we'll plan the rest with you."
+          action={{ href: "/for-visitors", label: "Plan your visit" }}
+        />
+        <Banner
+          tone="grey"
+          title="Are you a professional driver?"
+          body="See every assignment in full before you accept. Declining never counts against you."
+          action={{ href: "/drivers", label: "Drive with Flydrive", style: "secondary" }}
+        />
+      </div>
     </>
   );
 }

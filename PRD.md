@@ -4,7 +4,7 @@
 
 ## 1. Product mandate
 
-Flydrive helps private vehicle owners arrange a highly vetted professional driver for an agreed duration. The company coordinates screening, suitable-driver selection, driver acceptance, full payment, operations verification, booking confirmation, handover and support. This is not point-to-point ride hailing. A visitor who needs Flydrive to source both a car and driver is a separate future/gated path.
+Flydrive helps private vehicle owners arrange a highly vetted professional driver for an agreed duration. The company coordinates screening, suitable-driver selection, driver acceptance, full payment, operations verification, booking confirmation, handover and support. This is not point-to-point ride hailing. Car + driver (Flydrive arranges the vehicle too) is approved as a service per ADR 0002; its supply, pricing, deposit and cover terms remain OPEN.
 
 ## 2. Goals and measures
 
@@ -32,7 +32,7 @@ Required surfaces: multi-page public website, customer web portal, driver respon
 
 Separate navigable routes: home (`/`); services and package detail (`/services`, `/services/[package]`); how it works; trust/safety; Lagos and Ibadan; visitors; drivers and driver application; about; FAQ; contact; privacy; terms; 404. Shared nav/footer are fine. A single long page with anchor links is not sufficient.
 
-Each route has meaningful page-specific content, metadata, responsive layout, keyboard/screen reader support, visible form labels/errors, loading/empty/error states where dynamic. No unverified numerical proof or testimonials. Legal pages require counsel approval. Visitor page must state customer-provided vehicle for pilot and not imply cars are available.
+Each route has meaningful page-specific content, metadata, responsive layout, keyboard/screen reader support, visible form labels/errors, loading/empty/error states where dynamic. No unverified numerical proof or testimonials. Legal pages require counsel approval. Visitor page presents car + driver and driver-only options (ADR 0002) without promising specific vehicles, capacities or prices until confirmed.
 
 ## 5. Packages and operational rules
 
@@ -71,7 +71,7 @@ Driver check cases and review history; availability and overlap check; booking q
 
 ## 10. Out of pilot
 
-Confirmed vehicle sourcing/rental; live GPS/geofence; GPS overtime; native apps; automatic strike/rotation; automatic insurance binding; uncontracted integrations; unapproved prices/payouts; guaranteed emergency or 24/7 support. Keep disabled until decisions/evidence exist.
+Automated supplier/fleet integrations (car + driver itself is approved, ADR 0002); live GPS/geofence; GPS overtime; native apps; automatic strike/rotation; automatic insurance binding; uncontracted integrations; unapproved prices/payouts; guaranteed emergency or 24/7 support. Keep disabled until decisions/evidence exist.
 
 ## 11. Quality requirements
 

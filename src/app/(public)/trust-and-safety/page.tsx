@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Notice, PageHeader, Section } from "@/ui/blocks";
+import { CheckList, Notice, PageHeader, Section } from "@/ui/blocks";
 
 export const metadata: Metadata = {
   title: "Trust & safety",
@@ -19,11 +19,14 @@ export default function TrustPage() {
       />
       <Section title="Driver checks" id="checks">
         <p>Before a driver can be offered to any customer, they must have:</p>
-        <ul>
-          <li>a verified identity,</li>
-          <li>a valid driver&apos;s licence, and</li>
-          <li>a guarantor.</li>
-        </ul>
+        <CheckList
+          plain
+          items={[
+            { label: "A verified identity" },
+            { label: "A valid driver's licence" },
+            { label: "A guarantor on file" },
+          ]}
+        />
         <p>
           Flydrive also intends to carry out background checks. The sources and process are being
           finalised with legal advice, and we will describe them here once they are in place.
@@ -39,11 +42,11 @@ export default function TrustPage() {
           driver&apos;s training status shows as <strong>Pending</strong>.
         </p>
       </Section>
-      <Section title="Your car" id="vehicle">
+      <Section title="The car" id="vehicle">
         <p>
-          You and the driver each record the car&apos;s condition at pickup and return, with notes
-          and optional photos. Records are stored privately. If the car or passengers change, we
-          review the booking again before it continues.
+          Whether it&apos;s your car or one we arrange, you and the driver each record its condition
+          at pickup and return, with notes and optional photos. Records are stored privately. If the
+          car or passengers change, we review the booking again before it continues.
         </p>
       </Section>
       <Section title="Safety concerns" tone="tint" id="safety">

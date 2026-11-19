@@ -20,7 +20,7 @@ No agent may convert OPEN items into production policy. Record owner decision/da
 - **Ops/Safety — OPEN:** Handler staffing, emergency escalation, backup/overnight response, contact channel, incident triage and evidence preservation.
 - **Ops/Legal — OPEN:** Strike policy evidence, hearing, authority, review/appeal, rating impact, interim safety pause; human-led until approved.
 - **Ops/Legal — OPEN:** Vehicle ownership/authorization proof, reviewers, timing, access and retention.
-- **Business/Legal/Insurance — OPEN:** Visitor car+driver model, supplier/inventory authority, class, deposit, damage/liability, insurance, pricing, return and agreements. Keep gated.
+- **Business/Legal/Insurance — PARTLY DECIDED (ADR 0002, 19 Nov 2026):** Car + driver is approved as a service and shown on the site. Still OPEN: supplier/inventory authority, capacity per class, deposit, damage/liability, insurance, pricing, fuel policy, return terms and agreements.
 
 ## Technical
 

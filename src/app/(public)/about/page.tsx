@@ -5,7 +5,7 @@ import { PageHeader, Section } from "@/ui/blocks";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Flydrive helps private car owners in Lagos and Ibadan arrange a trusted, vetted professional driver for an agreed period.",
+    "Flydrive arranges trusted, vetted professional drivers in Lagos and Ibadan — for your own car, or with a car we arrange.",
   alternates: { canonical: "/about" },
 };
 
@@ -20,8 +20,9 @@ export default function AboutPage() {
       <Section title="What we do" id="what">
         <p>
           Flydrive coordinates the parts that are hard to do alone: screening drivers, matching a
-          suitable driver to your request, making sure the driver agrees to the full job, taking
-          payment, confirming the booking, and recording the handover of your car.
+          suitable driver to your request, arranging a car when you need one, making sure the driver
+          agrees to the full job, taking payment, confirming the booking, and recording the handover
+          of your car.
         </p>
       </Section>
       <Section title="How we work" tone="tint" id="principles">

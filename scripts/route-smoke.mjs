@@ -27,6 +27,7 @@ const PUBLIC = [
   "/services/monthly",
   "/services/weekend",
   "/services/custom",
+  "/services/car-and-driver",
 ];
 const PORTAL = [
   "/account",

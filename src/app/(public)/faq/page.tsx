@@ -6,18 +6,22 @@ import { PageHeader, Section } from "@/ui/blocks";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Answers to common questions about Flydrive: cars, notice period, choosing a driver, payment, costs during the booking and safety.",
+    "Answers to common questions about Flydrive: car + driver, notice period, choosing a driver, payment, costs during the booking and safety.",
   alternates: { canonical: "/faq" },
 };
 
 const FAQS: { q: string; a: ReactNode }[] = [
   {
     q: "Do you provide the car?",
-    a: "No. During the pilot, Flydrive arranges a driver for a car you own or are authorised to use. We don't supply cars.",
+    a: "You choose. Book a driver for a car you own or are authorised to use, or book car + driver and we arrange a suitable vehicle too.",
+  },
+  {
+    q: "What cars are available for car + driver?",
+    a: "You choose a class — saloon, SUV or minivan — and we match a suitable car. The exact make and model is confirmed with your booking.",
   },
   {
     q: "Is this like ride-hailing?",
-    a: "No. You book a driver for a period of time — a half-day, a day, a week or longer — to drive your own car.",
+    a: "No. You book a driver for a period of time — a half-day, a day, a week or longer — in your own car or one we arrange.",
   },
   {
     q: "How much notice do you need?",
@@ -41,7 +45,7 @@ const FAQS: { q: string; a: ReactNode }[] = [
   },
   {
     q: "Who pays for fuel and tolls?",
-    a: "You do — fuel, tolls, parking and washing during the booking. The driver pays their own transport to and from the job.",
+    a: "On driver-only bookings, you do — fuel, tolls, parking and washing. The driver pays their own transport to and from the job. For car + driver, the fuel, toll and deposit policy is being finalised and will be shown before you pay.",
   },
   {
     q: "What if my driver can't make it after I've paid?",

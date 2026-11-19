@@ -19,14 +19,16 @@ export default function HowItWorksPage() {
       />
       <Section>
         <Steps
+          variant="stacked"
           items={[
             {
               title: "Request a driver",
               body: (
                 <p>
                   Tell us the package, dates and times, pickup point, what the driver will be doing,
-                  your car and its transmission, who will travel, and any accommodation for
-                  overnight trips. Bookings need three days&apos; notice.
+                  who will travel, and any accommodation for overnight trips. Tell us about your car
+                  and its transmission — or, for car + driver, the vehicle class you need. Bookings
+                  need three days&apos; notice.
                 </p>
               ),
             },

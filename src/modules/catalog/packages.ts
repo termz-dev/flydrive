@@ -1,5 +1,6 @@
 /**
- * Draft service catalogue from PRD §5. Names and shapes come from the Flydrive working draft.
+ * Draft service catalogue from PRD §5. Every package is offered driver-only or as car + driver
+ * (ADR 0002). Names and shapes come from the Flydrive working draft.
  * Hours, rest/breaks, cut-offs and rates are OPEN (docs/OPEN_QUESTIONS.md) and are deliberately
  * absent: there is no price or hours field to fill in by accident. When Product/Finance approve
  * values, they arrive through versioned price rules (Phase 3/6), not by editing this file.
@@ -20,10 +21,10 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
   {
     slug: "half-day",
     name: "Half-day",
-    summary: "A vetted driver for part of a day, in your own car.",
+    summary: "A vetted driver for part of a day.",
     description: [
       "For a single block of errands, appointments or an event where you would rather not drive yourself.",
-      "The driver comes to your agreed pickup point and drives your vehicle for the booked period.",
+      "The driver comes to your agreed pickup point — in your car, or with a car we arrange — for the booked period.",
     ],
     suitedTo: ["Appointments and errands", "Short events", "A trial before a longer booking"],
     beingFinalised: ["Exact number of hours", "Start-time window", "Pricing"],

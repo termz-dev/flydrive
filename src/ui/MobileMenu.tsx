@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import type { NavItem } from "./site";
+import { isCurrent, type NavItem } from "./site";
 
 /** Disclosure menu for small screens. Closes on route change and Escape; returns focus to the toggle. */
 export function MobileMenu({ items }: { items: readonly NavItem[] }) {
@@ -46,7 +46,7 @@ export function MobileMenu({ items }: { items: readonly NavItem[] }) {
         <ul>
           {items.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} aria-current={pathname === item.href ? "page" : undefined}>
+              <Link href={item.href} aria-current={isCurrent(pathname, item) ? "page" : undefined}>
                 {item.label}
               </Link>
             </li>

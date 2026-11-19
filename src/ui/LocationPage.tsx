@@ -8,7 +8,7 @@ export function LocationPage({ city, notes }: { city: "Lagos" | "Ibadan"; notes:
       <PageHeader
         eyebrow="Location"
         title={`Drivers for your car in ${city}`}
-        lead={`${city} is one of Flydrive's two pilot cities. You provide the car; we arrange a vetted driver for the time you need.`}
+        lead={`${city} is one of Flydrive's two pilot cities. Book a vetted driver for your own car, or car + driver, for the time you need.`}
       />
       <Section>
         {notes.map((n) => (
@@ -32,6 +32,7 @@ export function LocationPage({ city, notes }: { city: "Lagos" | "Ibadan"; notes:
         <BookingNotOpen />
         <p>
           <Link href="/services">See services</Link> ·{" "}
+          <Link href="/services/car-and-driver">Car + driver</Link> ·{" "}
           <Link
             href={`/locations/${other.toLowerCase()}` as "/locations/lagos" | "/locations/ibadan"}
           >

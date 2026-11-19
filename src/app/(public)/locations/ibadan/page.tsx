@@ -3,7 +3,8 @@ import { LocationPage } from "@/ui/LocationPage";
 
 export const metadata: Metadata = {
   title: "Drivers in Ibadan",
-  description: "Arrange a vetted professional driver for your own car in Ibadan with Flydrive.",
+  description:
+    "Book a vetted professional driver in Ibadan with Flydrive — for your own car, or car + driver.",
   alternates: { canonical: "/locations/ibadan" },
 };
 

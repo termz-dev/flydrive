@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Notice } from "./blocks";
+import { Logo } from "./icons";
 
 export type Portal = "customer" | "driver" | "operations";
 
@@ -25,9 +26,7 @@ export function PortalShell({ portal, children }: { portal: Portal; children: Re
       <header className="site-header">
         <div className="container header-inner">
           <Link href="/" className="brand">
-            <span className="brand-mark" aria-hidden="true">
-              F
-            </span>
+            <Logo />
             Flydrive
           </Link>
           <span className="portal-badge">{label}</span>
