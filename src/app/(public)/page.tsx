@@ -1,3 +1,4 @@
+import type React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SERVICE_PACKAGES } from "@/modules/catalog/packages";
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
 };
 
 const HALF = "(max-width: 860px) 100vw, 640px";
+
+/** Section padding from design/source/Main.dc.html (top and bottom add up; nothing collapses). */
+const band = (top: number, bottom: number) =>
+  ({ "--pt": `${top}px`, "--pb": `${bottom}px` }) as React.CSSProperties;
 
 export default function HomePage() {
   const open = bookingsOpen();
@@ -66,7 +71,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tint" aria-labelledby="ways-heading">
+      <section className="band band-tint" style={band(112, 112)} aria-labelledby="ways-heading">
         <div className="container">
           <div className="section-head">
             <h2 id="ways-heading" className="h-section" style={{ maxWidth: 720 }}>
@@ -127,7 +132,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tight" aria-labelledby="packages-heading">
+      <section className="band" style={band(64, 64)} aria-labelledby="packages-heading">
         <div className="container">
           <div className="pkg-panel has-pattern">
             <RoadPattern layout="a" />
@@ -160,7 +165,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tight" aria-labelledby="steps-heading">
+      <section className="band" style={band(88, 88)} aria-labelledby="steps-heading">
         <div className="container split">
           <div className="split-copy">
             <h2 id="steps-heading" className="h-section">
@@ -223,7 +228,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tight" aria-labelledby="safety-heading">
+      <section className="band" style={band(32, 64)} aria-labelledby="safety-heading">
         <div className="container">
           <div className="dark-panel">
             <div className="dark-panel-copy">
@@ -259,7 +264,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tight" aria-label="Cities">
+      <section className="band" style={band(64, 64)} aria-label="Cities">
         <div className="container city-tiles">
           <Link href="/locations/lagos" className="city-tile">
             <svg
@@ -299,7 +304,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tight" style={{ paddingBottom: 120 }} aria-label="More">
+      <section className="band" style={band(32, 120)} aria-label="More">
         <div className="container promo-grid">
           <article className="promo promo-amber">
             <Photo name="family" sizes={HALF} />

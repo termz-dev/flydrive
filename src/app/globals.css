@@ -240,6 +240,18 @@ hr {
 .section-tint {
   background: var(--fd-surface-2);
 }
+/* Home bands: exact design paddings, scaled down on small screens. */
+.band {
+  padding: var(--pt, 64px) 0 var(--pb, 64px);
+}
+.band-tint {
+  background: var(--fd-surface-2);
+}
+@media (max-width: 720px) {
+  .band {
+    padding: calc(var(--pt, 64px) * 0.6) 0 calc(var(--pb, 64px) * 0.6);
+  }
+}
 .section + .section:not(.section-tint) {
   padding-top: 0;
 }
@@ -270,6 +282,13 @@ hr {
 .section-head .aside {
   max-width: 380px;
   margin: 0;
+}
+.h-section,
+.h-sub,
+.home-hero h1,
+.svc-body h3,
+.promo-body h2 {
+  text-wrap: wrap;
 }
 .h-section {
   font-size: clamp(2rem, 4vw, 3.5rem);
@@ -992,6 +1011,7 @@ button.button:disabled {
   background: var(--fd-field);
   font-size: 0.75rem;
   font-weight: 600;
+  line-height: 1.2;
   color: var(--fd-subtle);
   cursor: text;
   border: 1px solid transparent;
@@ -1011,12 +1031,25 @@ button.button:disabled {
   font-size: 1rem;
   font-weight: 500;
   outline: none;
-  min-height: 24px;
+  height: 24px;
+  line-height: 24px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.wfield select {
+  padding-right: 24px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b0f14' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")
+    right 0 center / 14px no-repeat;
+  cursor: pointer;
+}
+.wfield input::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
 }
 .widget .button {
   margin-top: 6px;
   width: 100%;
-  min-height: 56px;
+  min-height: 52px;
 }
 .widget-note {
   margin: 2px 4px 0;
