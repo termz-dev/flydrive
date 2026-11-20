@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { bookingsOpen } from "@/platform/config";
 import { FOOTER_NAV, SITE_NAME, SITE_TAGLINE } from "./site";
 
 export function SiteFooter() {
@@ -29,7 +30,11 @@ export function SiteFooter() {
       </div>
       <div className="container footer-base">
         <p>© 2026 {SITE_NAME}</p>
-        <p>Online booking is not open yet. Support hours will be published before launch.</p>
+        <p>
+          {bookingsOpen()
+            ? "Support hours will be published on the contact page."
+            : "Online booking is not open yet. Support hours will be published before launch."}
+        </p>
       </div>
     </footer>
   );

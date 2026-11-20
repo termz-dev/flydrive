@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { bookingsOpen } from "@/platform/config";
 import { Logo } from "./icons";
 import { MobileMenu } from "./MobileMenu";
 import { NavLinks } from "./NavLinks";
@@ -15,13 +16,24 @@ export function SiteHeader() {
         <nav aria-label="Main" className="desktop-only">
           <NavLinks items={PRIMARY_NAV} />
         </nav>
-        {/* Booking isn't open, so the design's "Book now"/"Sign in" become Contact until it is. */}
-        <Link
-          href="/contact"
-          className="button button-yellow button-arrow button-small desktop-only"
-        >
-          Contact us
+        <Link href="/sign-in" className="header-signin desktop-only">
+          Sign in
         </Link>
+        {bookingsOpen() ? (
+          <Link
+            href="/bookings/new"
+            className="button button-yellow button-arrow button-small desktop-only"
+          >
+            Book a driver
+          </Link>
+        ) : (
+          <Link
+            href="/contact"
+            className="button button-yellow button-arrow button-small desktop-only"
+          >
+            Contact us
+          </Link>
+        )}
         <MobileMenu items={PRIMARY_NAV} />
       </div>
     </header>

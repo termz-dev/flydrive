@@ -54,6 +54,9 @@ export function MobileMenu({ items }: { items: readonly NavItem[] }) {
           <li>
             <Link href="/contact">Contact</Link>
           </li>
+          <li>
+            <Link href="/sign-in">Sign in</Link>
+          </li>
         </ul>
       </nav>
     </div>

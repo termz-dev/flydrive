@@ -6,6 +6,8 @@ export function proxy(request: NextRequest) {
   const correlationId = resolveCorrelationId(request.headers.get(CORRELATION_HEADER));
   const headers = new Headers(request.headers);
   headers.set(CORRELATION_HEADER, correlationId);
+  // Lets server components build "?next=" sign-in redirects without client input.
+  headers.set("x-pathname", request.nextUrl.pathname);
   const response = NextResponse.next({ request: { headers } });
   response.headers.set(CORRELATION_HEADER, correlationId);
   return response;

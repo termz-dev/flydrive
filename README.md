@@ -21,7 +21,7 @@ pnpm build && pnpm test:routes   # starts the built app and checks every route
 
 Visual design: editorial layout (ADR 0004) in the Claude Design colours and fonts (ADR 0005); content structure from the Flydrive Claude Design canvas. Swap illustrations for photos in `src/ui/Media.tsx`.
 
-Current build status: Phase 2 (foundation and multi-page shell). Public pages are live content; customer, driver and operations portals are skeletons that show "sign-in isn't available yet". See `docs/PHASE_02_REPORT.md`.
+Current build status: the full booking product (Phases 3–15) — customer, driver and operations portals, Paystack payments, ops confirmation and handover. See `docs/PHASES_03_15_REPORT.md`, `docs/LOCAL_DEVELOPMENT.md` and `docs/DEPLOY_VERCEL_SUPABASE.md`.
 
 ## Start here
 

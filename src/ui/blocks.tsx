@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Route } from "next";
 import type { ReactNode } from "react";
+import { bookingsOpen } from "@/platform/config";
 import { Tick } from "./icons";
 
 export function PageHeader({
@@ -91,6 +92,20 @@ export function Notice({
 }
 
 export function BookingNotOpen() {
+  if (bookingsOpen()) {
+    return (
+      <Notice title="Ready when you are">
+        <p>
+          Request a driver online — you choose who drives, and nothing is charged until your driver
+          accepts.
+        </p>
+        <p>
+          <Link href="/bookings/new">Request a driver</Link> ·{" "}
+          <Link href="/sign-up">Create an account</Link>
+        </p>
+      </Notice>
+    );
+  }
   return (
     <Notice title="Online booking isn't open yet" tone="pending">
       <p>

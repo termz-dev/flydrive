@@ -1,58 +1,79 @@
 import Link from "next/link";
+import type { Route } from "next";
 import type { ReactNode } from "react";
-import { Notice } from "./blocks";
+import { signOut } from "@/modules/identity/actions";
 import { Logo } from "./icons";
+import { PortalNav } from "./PortalNav";
 
 export type Portal = "customer" | "driver" | "operations";
 
-const COPY: Record<Portal, { label: string; who: string }> = {
-  customer: { label: "Customer account", who: "customers" },
-  driver: { label: "Driver portal", who: "Flydrive drivers" },
-  operations: { label: "Operations", who: "authorised Flydrive staff" },
+const NAV: Record<Portal, { label: string; items: { href: Route; label: string }[] }> = {
+  customer: {
+    label: "Customer",
+    items: [
+      { href: "/account", label: "My bookings" },
+      { href: "/bookings/new", label: "Request a driver" },
+      { href: "/support", label: "Support" },
+    ],
+  },
+  driver: {
+    label: "Driver",
+    items: [
+      { href: "/driver", label: "Home" },
+      { href: "/driver/availability", label: "Availability" },
+      { href: "/driver/onboarding", label: "My checks" },
+    ],
+  },
+  operations: {
+    label: "Operations",
+    items: [
+      { href: "/ops", label: "Overview" },
+      { href: "/ops/bookings", label: "Bookings" },
+      { href: "/ops/payments", label: "Payments" },
+      { href: "/ops/drivers", label: "Drivers" },
+      { href: "/ops/fleet", label: "Fleet" },
+      { href: "/ops/incidents", label: "Incidents" },
+      { href: "/ops/audit", label: "Audit" },
+    ],
+  },
 };
 
-/**
- * Shell for authenticated route groups. Sign-in is not implemented (identity provider is OPEN),
- * so every portal page renders an honest unavailable state and no data. Pages may describe
- * their purpose but must not load or echo any resource. Authorization arrives in Phase 4.
- */
-export function PortalShell({ portal, children }: { portal: Portal; children: ReactNode }) {
-  const { label, who } = COPY[portal];
+export function PortalShell({
+  portal,
+  userName,
+  children,
+}: {
+  portal: Portal;
+  userName: string;
+  children: ReactNode;
+}) {
+  const nav = NAV[portal];
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header">
-        <div className="container header-inner">
+      <header className="portal-header">
+        <div className="container portal-header-inner">
           <Link href="/" className="brand">
             <Logo />
             Flydrive
           </Link>
-          <span className="portal-badge">{label}</span>
+          <span className="portal-badge">{nav.label}</span>
+          <PortalNav items={nav.items} />
+          <div className="portal-user">
+            <span className="muted">{userName}</span>
+            <form action={signOut}>
+              <button type="submit" className="link-button">
+                Sign out
+              </button>
+            </form>
+          </div>
         </div>
       </header>
-      <main id="main" tabIndex={-1} className="container narrow portal-shell">
+      <main id="main" tabIndex={-1} className="container portal-main">
         {children}
-        <Notice title="Sign-in isn't available yet" tone="pending">
-          <p>
-            This area is for {who}. Accounts haven&apos;t been switched on, so there is nothing to
-            show here and no action can be taken.
-          </p>
-          <p>
-            <Link href="/">Return to the Flydrive website</Link>
-          </p>
-        </Notice>
       </main>
-    </>
-  );
-}
-
-export function PortalPage({ title, purpose }: { title: string; purpose: string }) {
-  return (
-    <>
-      <h1>{title}</h1>
-      <p className="lead">{purpose}</p>
     </>
   );
 }

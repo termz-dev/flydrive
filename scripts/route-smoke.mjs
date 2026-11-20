@@ -49,6 +49,9 @@ const PORTAL = [
   "/ops/payments",
   "/ops/incidents",
   "/ops/audit",
+  "/ops/fleet",
+  "/sign-in",
+  "/sign-up",
 ];
 const NOT_FOUND = ["/does-not-exist", "/services/helicopter"];
 

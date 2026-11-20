@@ -21,6 +21,20 @@ export const envSchema = z.object({
       .optional(),
   ),
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
+  /** "true" opens customer sign-up, booking requests and driver applications. Build-time. */
+  NEXT_PUBLIC_BOOKINGS_OPEN: z.enum(["true", "false"]).default("false"),
+  /** Postgres URL. Local in development; Supabase pooler (port 6543) on Vercel. */
+  DATABASE_URL: optionalNonEmpty.pipe(z.string().startsWith("postgres").optional()),
+  /** 32 random bytes, base64. Encrypts staff MFA secrets. */
+  APP_ENCRYPTION_KEY: optionalNonEmpty.pipe(
+    z
+      .string()
+      .refine((v) => Buffer.from(v, "base64").length === 32, "must be 32 bytes, base64")
+      .optional(),
+  ),
+  PAYSTACK_SECRET_KEY: optionalNonEmpty.pipe(z.string().startsWith("sk_").optional()),
+  /** Shared secret Vercel Cron sends as a Bearer token to /api/cron/*. */
+  CRON_SECRET: optionalNonEmpty.pipe(z.string().min(16).optional()),
 });
 
 export type AppConfig = z.infer<typeof envSchema>;
@@ -50,6 +64,16 @@ export function getConfig(): AppConfig {
     NEXT_PUBLIC_CONTACT_EMAIL: process.env.NEXT_PUBLIC_CONTACT_EMAIL,
     NEXT_PUBLIC_CONTACT_PHONE: process.env.NEXT_PUBLIC_CONTACT_PHONE,
     LOG_LEVEL: process.env.LOG_LEVEL,
+    NEXT_PUBLIC_BOOKINGS_OPEN: process.env.NEXT_PUBLIC_BOOKINGS_OPEN,
+    DATABASE_URL: process.env.DATABASE_URL,
+    APP_ENCRYPTION_KEY: process.env.APP_ENCRYPTION_KEY,
+    PAYSTACK_SECRET_KEY: process.env.PAYSTACK_SECRET_KEY,
+    CRON_SECRET: process.env.CRON_SECRET,
   });
   return cached;
+}
+
+/** Whether the public can sign up, request bookings and apply to drive. */
+export function bookingsOpen(): boolean {
+  return process.env.NEXT_PUBLIC_BOOKINGS_OPEN === "true";
 }
