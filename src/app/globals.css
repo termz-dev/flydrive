@@ -1269,3 +1269,45 @@ a:hover {
 .number-list a {
   color: #5d6e84;
 }
+
+/* ---------- home trust band ---------- */
+.section-trust {
+  background: var(--sand);
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px 64px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.trust-grid h2 {
+  max-width: 520px;
+}
+.trust-grid .lead {
+  font-size: 1.0625rem;
+  max-width: 500px;
+}
+.section-trust .check-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+@media (max-width: 480px) {
+  .section-trust .check-list {
+    grid-template-columns: 1fr;
+  }
+}
+.section-trust .check-list li {
+  background: #fff;
+  border-color: transparent;
+  border-radius: var(--r-md);
+  padding: 20px 22px;
+  align-items: center;
+}
+.section-trust .check-list li:has(small) {
+  align-items: flex-start;
+}

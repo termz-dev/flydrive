@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SERVICE_PACKAGES } from "@/modules/catalog/packages";
-import { Banner, Section } from "@/ui/blocks";
+import { Banner, CheckList, Section } from "@/ui/blocks";
 import { Clock } from "@/ui/icons";
 import { Media } from "@/ui/Media";
 import { PackageList } from "@/ui/PackageList";
@@ -13,15 +13,6 @@ export const metadata: Metadata = {
     "Flydrive arranges a vetted professional driver in Lagos and Ibadan — for your own car, or with a car we arrange — by the half-day, day, week or longer.",
   alternates: { canonical: "/" },
 };
-
-/** Facts we can state today. No customer counts, ratings or reviews until they exist. */
-const FACTS = [
-  { label: "Cities", value: "2" },
-  { label: "Notice for a standard booking", value: "3 days" },
-  { label: "Checks before a driver is offered", value: "3" },
-  { label: "Ways to book: driver only, or car + driver", value: "2" },
-  { label: "Short-notice requests auto-confirmed", value: "0" },
-] as const;
 
 export default function HomePage() {
   return (
@@ -129,39 +120,27 @@ export default function HomePage() {
         />
       </Section>
 
-      <section className="section" style={{ paddingTop: 0 }} aria-labelledby="why-heading">
-        <div className="container why-grid">
-          <div className="why-copy">
-            <p className="eyebrow">Why Flydrive</p>
-            <h2 id="why-heading">Vetted on purpose. Confirmed for real.</h2>
+      <section className="section section-trust" aria-labelledby="trust-heading">
+        <div className="container trust-grid">
+          <div>
+            <p className="eyebrow">Trust &amp; safety</p>
+            <h2 id="trust-heading">Screened before they ever see a booking.</h2>
             <p className="lead">
-              Every driver passes identity, licence and guarantor checks before they can be offered
-              to anyone. You see who you&apos;re choosing, and a named Flydrive handler looks after
-              every confirmed booking.
+              Identity, licence and guarantor checks for every driver, with background checks being
+              finalised. A named Flydrive handler for every confirmed booking.
             </p>
-            <div>
-              <Link className="button button-arrow" href="/trust-and-safety">
-                How we vet drivers
-              </Link>
-            </div>
+            <Link href="/trust-and-safety" className="section-link">
+              How we vet drivers →
+            </Link>
           </div>
-          <div className="media-frame">
-            <Media slot="why" sizes="(max-width: 1000px) 100vw, 30vw" />
-          </div>
-          <div className="facts">
-            <dl>
-              {FACTS.map((f) => (
-                <div key={f.label}>
-                  <dt>{f.label}</dt>
-                  <dd>{f.value}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="facts-note">
-              Choosing a driver isn&apos;t a booking, and paying isn&apos;t a confirmation — until
-              our team checks it.
-            </p>
-          </div>
+          <CheckList
+            items={[
+              { label: "Identity verified" },
+              { label: "Licence checked" },
+              { label: "Guarantor on file" },
+              { label: "Background check", note: "Process being finalised" },
+            ]}
+          />
         </div>
       </section>
 
