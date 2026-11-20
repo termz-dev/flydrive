@@ -62,15 +62,15 @@ export function RoadScene({ title }: { title?: string }) {
       <g transform="translate(1180 700)">
         <path
           d="M0 70 V48 L30 40 L68 6 H170 L210 40 L250 48 V70 Z"
-          fill="#24201b"
-          stroke="#24201b"
+          fill="#0e1a2b"
+          stroke="#0e1a2b"
           strokeWidth="8"
           strokeLinejoin="round"
         />
         <path d="M80 14 L60 40 H200 L170 14 Z" fill="#f2cf9a" opacity="0.55" />
-        <circle cx="62" cy="74" r="20" fill="#24201b" />
+        <circle cx="62" cy="74" r="20" fill="#0e1a2b" />
         <circle cx="62" cy="74" r="8" fill="#b98a5b" />
-        <circle cx="194" cy="74" r="20" fill="#24201b" />
+        <circle cx="194" cy="74" r="20" fill="#0e1a2b" />
         <circle cx="194" cy="74" r="8" fill="#b98a5b" />
       </g>
       {/* palms */}
@@ -127,7 +127,7 @@ export function CityScene({ title }: { title?: string }) {
           <rect key={x} x={x - 5} y="660" width="10" height="60" />
         ))}
       </g>
-      <g fill="#ffc83d">
+      <g fill="#f5b53d">
         <rect x="300" y="646" width="26" height="10" rx="3" />
         <rect x="520" y="646" width="26" height="10" rx="3" />
       </g>

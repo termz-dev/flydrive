@@ -3,37 +3,38 @@
  * Cream surfaces, warm near-black ink, one yellow accent, pill controls, large rounded frames.
  */
 :root {
-  --cream: #f6efe4;
-  --cream-2: #fbf7f0;
-  --sand: #ece2d2;
-  --line: #e3d8c6;
-  --ink: #24201b;
-  --ink-soft: #5e574d;
-  --muted: #857c6f;
-  --dark: #26221d;
-  --dark-2: #302b25;
-  --dark-line: #423b33;
-  --on-dark: #f3ede3;
-  --on-dark-soft: #b9b0a2;
-  --on-dark-muted: #7f776b;
-  --yellow: #ffc83d;
-  --yellow-soft: #fff1c7;
-  --green: #2f7a4f;
+  /* Colours and fonts from the Flydrive Claude Design canvas (ADR 0005) */
+  --cream: #ffffff; /* page */
+  --cream-2: #f7f8fa; /* cards, raised panels */
+  --sand: #f2f4f7; /* tints, image wells */
+  --line: #e4e7ec;
+  --ink: #0e1a2b;
+  --ink-soft: #475467;
+  --muted: #5b6778;
+  --blue: #1f5c8c;
+  --dark: #0e1a2b;
+  --dark-2: #16263c;
+  --dark-line: #22324a;
+  --on-dark: #ffffff;
+  --on-dark-soft: #c9d2de;
+  --on-dark-muted: #a9b6c6;
+  --yellow: #f5b53d; /* amber */
+  --yellow-soft: #fff8ea;
+  --green: #1a6b43;
   --error: #b42318;
-  --focus: #1d4ed8;
+  --focus: #1f5c8c;
 
   --r-sm: 8px;
   --r-md: 14px;
   --r-lg: 20px;
   --r-xl: 28px;
   --pill: 999px;
-  --shadow: 0 10px 30px rgba(36, 32, 27, 0.08);
+  --shadow: 0 10px 30px rgba(14, 26, 43, 0.08);
 
   --max: 1240px;
   --narrow: 760px;
-  --font:
-    "Instrument Sans Variable", "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --display: var(--font);
+  --font: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Space Grotesk", var(--font);
 
   font-family: var(--font);
   color: var(--ink);
@@ -61,9 +62,9 @@ h1,
 h2,
 h3 {
   font-family: var(--display);
-  font-weight: 600;
-  line-height: 1.02;
-  letter-spacing: -0.035em;
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   margin: 0 0 0.5em;
   text-wrap: balance;
 }
@@ -168,10 +169,10 @@ ol {
   gap: 1rem;
   min-height: 62px;
   padding: 8px 8px 8px 20px;
-  background: rgba(251, 247, 240, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(227, 216, 198, 0.9);
+  border: 1px solid rgba(228, 231, 236, 0.9);
   border-radius: var(--pill);
   box-shadow: var(--shadow);
 }
@@ -299,7 +300,7 @@ ol {
 }
 .button-secondary:hover {
   color: var(--ink);
-  background: rgba(36, 32, 27, 0.05);
+  background: rgba(14, 26, 43, 0.05);
 }
 .button-on-dark {
   background: var(--cream-2);
@@ -358,7 +359,7 @@ ol {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(251, 247, 240, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid var(--line);
   border-radius: var(--pill);
   padding: 6px 14px;
@@ -426,9 +427,9 @@ ol {
   z-index: -1;
   background: linear-gradient(
     90deg,
-    rgba(246, 239, 228, 0.92) 0%,
-    rgba(246, 239, 228, 0.7) 38%,
-    rgba(246, 239, 228, 0) 70%
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.7) 38%,
+    rgba(255, 255, 255, 0) 70%
   );
 }
 .hero-content {
@@ -451,9 +452,9 @@ ol {
   .hero-frame::after {
     background: linear-gradient(
       180deg,
-      rgba(246, 239, 228, 0.55) 0%,
-      rgba(246, 239, 228, 0.9) 45%,
-      rgba(246, 239, 228, 0.97) 100%
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.9) 45%,
+      rgba(255, 255, 255, 0.97) 100%
     );
   }
   .hero-content {
@@ -480,7 +481,7 @@ ol {
   left: 16px;
   right: 16px;
   bottom: 16px;
-  background: rgba(38, 34, 29, 0.78);
+  background: rgba(14, 26, 43, 0.8);
   backdrop-filter: blur(8px);
   color: var(--on-dark);
   border-radius: var(--r-md);
@@ -841,7 +842,7 @@ ol {
 }
 .notice-pending {
   background: var(--yellow-soft);
-  border-color: #f3dc94;
+  border-color: #f0d49a;
 }
 .notice-title {
   font-weight: 700;
@@ -1142,9 +1143,9 @@ ol {
   .hero-frame::after {
     background: linear-gradient(
       180deg,
-      rgba(246, 239, 228, 0.92) 0%,
-      rgba(246, 239, 228, 0.88) 58%,
-      rgba(246, 239, 228, 0) 82%
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.88) 58%,
+      rgba(255, 255, 255, 0) 82%
     );
   }
   .hero-content {
@@ -1226,4 +1227,45 @@ ol {
 }
 .steps-progress[data-anim="ready"] .step-fill {
   transform: scaleX(0);
+}
+
+/* ---------- Claude Design typography & accents (ADR 0005) ---------- */
+.brand,
+.footer-about .footer-brand,
+.number-list .name,
+.city-name,
+.facts dd,
+.facts-note,
+.notice-title,
+.faq dt,
+.step-num,
+.steps li::before {
+  font-family: var(--display);
+}
+.brand,
+.footer-about .footer-brand,
+.city-name {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.eyebrow {
+  color: var(--blue);
+}
+.panel-dark .eyebrow {
+  color: var(--yellow);
+}
+a {
+  color: var(--blue);
+}
+a:hover {
+  color: var(--ink);
+}
+.section-link {
+  color: var(--blue);
+}
+.city-sub {
+  opacity: 0.85;
+}
+.number-list a {
+  color: #5d6e84;
 }
