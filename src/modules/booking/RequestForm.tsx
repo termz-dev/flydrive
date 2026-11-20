@@ -18,29 +18,32 @@ export function RequestForm({
     <ActionForm action={requestBookingAction} className="form-card">
       {(e) => (
         <>
-          <div className="form-grid">
-            <Select
-              label="Package"
-              name="pkg"
-              defaultValue={defaultPackage ?? "full-day"}
-              options={SERVICE_PACKAGES.map((p) => ({ value: p.slug, label: p.name }))}
-              error={e.pkg}
-            />
-            <Select
-              label="City"
-              name="city"
-              options={[
-                { value: "lagos", label: "Lagos" },
-                { value: "ibadan", label: "Ibadan" },
-              ]}
-              error={e.city}
-            />
-          </div>
+          <fieldset className="form-section">
+            <legend>The booking</legend>
+            <div className="form-grid">
+              <Select
+                label="Package"
+                name="pkg"
+                defaultValue={defaultPackage ?? "full-day"}
+                options={SERVICE_PACKAGES.map((p) => ({ value: p.slug, label: p.name }))}
+                error={e.pkg}
+              />
+              <Select
+                label="City"
+                name="city"
+                options={[
+                  { value: "lagos", label: "Lagos" },
+                  { value: "ibadan", label: "Ibadan" },
+                ]}
+                error={e.city}
+              />
+            </div>
+          </fieldset>
 
-          <fieldset className="field">
-            <legend>Car</legend>
-            <div className="choice-row">
-              <label className="check">
+          <fieldset className="form-section">
+            <legend>The car</legend>
+            <div className="option-cards" role="radiogroup" aria-label="Who provides the car">
+              <label className="option-card">
                 <input
                   type="radio"
                   name="vehicleSource"
@@ -48,9 +51,10 @@ export function RequestForm({
                   checked={source === "customer"}
                   onChange={() => setSource("customer")}
                 />
-                I&apos;ll provide my car
+                <strong>I&apos;ll provide my car</strong>
+                <span>A vetted driver drives your vehicle.</span>
               </label>
-              <label className="check">
+              <label className="option-card">
                 <input
                   type="radio"
                   name="vehicleSource"
@@ -58,110 +62,133 @@ export function RequestForm({
                   checked={source === "flydrive"}
                   onChange={() => setSource("flydrive")}
                 />
-                I need a car too (car + driver)
+                <strong>I need a car too</strong>
+                <span>We arrange the car and the driver.</span>
               </label>
             </div>
+            {source === "customer" ? (
+              <div className="form-grid">
+                <Field label="Make" name="make" placeholder="Toyota" error={e.make} />
+                <Field label="Model" name="model" placeholder="Camry" error={e.model} />
+                <Select
+                  label="Transmission"
+                  name="transmission"
+                  options={[
+                    { value: "automatic", label: "Automatic" },
+                    { value: "manual", label: "Manual" },
+                  ]}
+                  error={e.transmission}
+                />
+                <Field
+                  label="Colour"
+                  name="colour"
+                  required={false}
+                  placeholder="Silver"
+                  error={e.colour}
+                />
+              </div>
+            ) : (
+              <Select
+                label="Vehicle class"
+                name="vehicleClass"
+                hint="We confirm the exact car with your booking."
+                options={[
+                  { value: "saloon", label: "Saloon" },
+                  { value: "suv", label: "SUV" },
+                  { value: "minivan", label: "Minivan" },
+                ]}
+                error={e.vehicleClass}
+              />
+            )}
           </fieldset>
 
-          {source === "customer" ? (
+          <fieldset className="form-section">
+            <legend>When and where</legend>
             <div className="form-grid">
-              <Field label="Make" name="make" placeholder="Toyota" error={e.make} />
-              <Field label="Model" name="model" placeholder="Camry" error={e.model} />
-              <Field label="Colour" name="colour" required={false} error={e.colour} />
-              <Select
-                label="Transmission"
-                name="transmission"
-                options={[
-                  { value: "automatic", label: "Automatic" },
-                  { value: "manual", label: "Manual" },
-                ]}
-                error={e.transmission}
+              <Field
+                label="Start"
+                name="startsAt"
+                type="datetime-local"
+                min={minStart}
+                hint="Lagos time"
+                error={e.startsAt}
+              />
+              <Field
+                label="End"
+                name="endsAt"
+                type="datetime-local"
+                min={minStart}
+                hint="Lagos time"
+                error={e.endsAt}
               />
             </div>
-          ) : (
-            <Select
-              label="Vehicle class"
-              name="vehicleClass"
-              hint="We confirm the exact car with your booking."
-              options={[
-                { value: "saloon", label: "Saloon" },
-                { value: "suv", label: "SUV" },
-                { value: "minivan", label: "Minivan" },
-              ]}
-              error={e.vehicleClass}
-            />
-          )}
-
-          <div className="form-grid">
             <Field
-              label="Start"
-              name="startsAt"
-              type="datetime-local"
-              min={minStart}
-              hint="Lagos time. Standard notice is 3 days."
-              error={e.startsAt}
+              label="Pickup area"
+              name="pickupArea"
+              placeholder="Lekki Phase 1"
+              hint="An area is enough for now. You'll share the exact meeting point once the booking is confirmed."
+              error={e.pickupArea}
             />
-            <Field
-              label="End"
-              name="endsAt"
-              type="datetime-local"
-              min={minStart}
-              hint="Lagos time."
-              error={e.endsAt}
-            />
-          </div>
-          <Field
-            label="Pickup area"
-            name="pickupArea"
-            placeholder="e.g. Lekki Phase 1"
-            hint="An area is enough for now. You'll share the exact meeting point after confirmation."
-            error={e.pickupArea}
-          />
-          <TextArea
-            label="What will the driver be doing?"
-            name="duties"
-            hint="Itinerary, stops, school runs, events — whatever helps the driver decide."
-            error={e.duties}
-          />
-          <Field
-            label="Passengers"
-            name="passengers"
-            type="number"
-            min={1}
-            max={20}
-            defaultValue={1}
-            inputMode="numeric"
-            error={e.passengers}
-          />
+          </fieldset>
 
-          <label className="check">
-            <input
-              type="checkbox"
-              name="overnightOutOfState"
-              checked={overnight}
-              onChange={(ev) => setOvernight(ev.target.checked)}
-            />
-            Includes an overnight stay outside the state
-          </label>
-          {overnight ? (
+          <fieldset className="form-section">
+            <legend>The job</legend>
             <TextArea
-              label="Driver's accommodation"
-              name="accommodationNote"
-              rows={2}
-              hint="Where the driver will sleep and freshen up. Meals aren't required."
-              error={e.accommodationNote}
+              label="What will the driver be doing?"
+              name="duties"
+              hint="Itinerary, stops, school runs, events — anything that helps the driver decide."
+              error={e.duties}
             />
-          ) : null}
-          <label className="check">
-            <input type="checkbox" name="prefersFemaleDriver" />
-            I&apos;d prefer a female driver (we&apos;ll try; not guaranteed)
-          </label>
-          <TextArea label="Anything else?" name="notes" required={false} rows={3} error={e.notes} />
-          <p className="field-hint">
-            Nothing is charged now. You&apos;ll choose a driver, they accept the full job, then you
-            pay and our team confirms.
-          </p>
-          <div>
+            <div className="form-grid">
+              <Field
+                label="Passengers"
+                name="passengers"
+                type="number"
+                min={1}
+                max={20}
+                defaultValue={1}
+                inputMode="numeric"
+                error={e.passengers}
+              />
+            </div>
+            <div className="toggle-row">
+              <label className="check">
+                <input
+                  type="checkbox"
+                  name="overnightOutOfState"
+                  checked={overnight}
+                  onChange={(ev) => setOvernight(ev.target.checked)}
+                />
+                Includes an overnight stay outside the state
+              </label>
+              {overnight ? (
+                <TextArea
+                  label="Driver's accommodation"
+                  name="accommodationNote"
+                  rows={2}
+                  hint="Where the driver will sleep and freshen up. Meals aren't required."
+                  error={e.accommodationNote}
+                />
+              ) : null}
+              <label className="check">
+                <input type="checkbox" name="prefersFemaleDriver" />
+                I&apos;d prefer a female driver — we&apos;ll try, but can&apos;t guarantee it
+              </label>
+            </div>
+            <TextArea
+              label="Anything else?"
+              name="notes"
+              required={false}
+              rows={3}
+              error={e.notes}
+            />
+          </fieldset>
+
+          <div className="form-actions">
+            <p className="field-hint">
+              Nothing is charged now. You&apos;ll choose a driver, they accept the full job, then
+              you pay and our team confirms.
+            </p>
             <SubmitButton pendingText="Sending request…">Send request</SubmitButton>
           </div>
         </>

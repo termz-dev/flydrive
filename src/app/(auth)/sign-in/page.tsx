@@ -17,6 +17,7 @@ export default async function SignInPage({
   return (
     <>
       <h1>Sign in</h1>
+      <p className="lead">Customers, drivers and Flydrive staff all sign in here.</p>
       {sp.signed_out ? (
         <p className="form-success" role="status">
           You&apos;ve signed out.
@@ -34,7 +35,7 @@ export default async function SignInPage({
           <p>Accounts haven&apos;t been switched on for this site.</p>
         </Notice>
       )}
-      <p style={{ marginTop: 20 }}>
+      <p className="auth-foot">
         {bookingsOpen() ? (
           <>
             New to Flydrive? <Link href="/sign-up">Create an account</Link> ·{" "}

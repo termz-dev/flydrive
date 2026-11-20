@@ -27,9 +27,9 @@ export default async function OpsDriver({ params }: { params: Promise<{ id: stri
   });
   return (
     <>
-      <p>
-        <Link href="/ops/drivers">← Drivers</Link>
-      </p>
+      <Link className="back-link" href="/ops/drivers">
+        ← Drivers
+      </Link>
       <div className="page-title-row">
         <h1>{d.fullName}</h1>
         <span className="badge">{d.profile.status.replace("_", " ")}</span>

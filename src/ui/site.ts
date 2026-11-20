@@ -12,8 +12,6 @@ export const PRIMARY_NAV: readonly NavItem[] = [
   { href: "/services/car-and-driver", label: "Car + driver" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/trust-and-safety", label: "Trust & safety" },
-  { href: "/locations/lagos", label: "Locations", match: ["/locations"] },
-  { href: "/for-visitors", label: "Visitors" },
   { href: "/drivers", label: "Drive with us" },
 ];
 

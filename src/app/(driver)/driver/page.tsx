@@ -54,8 +54,12 @@ export default async function DriverHome({
   return (
     <>
       <div className="page-title-row">
-        <h1>Hello, {p?.firstName ?? user.fullName}</h1>
-        <span className="badge">{STATUS_COPY[p?.status ?? "applicant"]}</span>
+        <div className="page-title">
+          <h1>Hello, {p?.firstName ?? user.fullName}</h1>
+          <span className={`badge ${p?.status === "eligible" ? "badge-green" : "badge-amber"}`}>
+            {STATUS_COPY[p?.status ?? "applicant"]}
+          </span>
+        </div>
       </div>
       {sp.applied ? (
         <p className="form-success" role="status">

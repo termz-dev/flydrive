@@ -69,7 +69,7 @@ describe("navigation state", () => {
     expect(current("/services")).toEqual(["Services"]);
     expect(current("/services/weekly")).toEqual(["Services"]);
     expect(current("/services/car-and-driver")).toEqual(["Car + driver"]);
-    expect(current("/locations/ibadan")).toEqual(["Locations"]);
+    expect(current("/locations/ibadan")).toEqual([]);
     expect(current("/drivers/apply")).toEqual(["Drive with us"]);
     expect(current("/about")).toEqual([]);
   });

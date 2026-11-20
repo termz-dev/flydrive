@@ -28,7 +28,7 @@ export default async function OpsDrivers({
   return (
     <>
       <h1>Drivers</h1>
-      <nav aria-label="Filter" className="portal-nav" style={{ marginBottom: 16 }}>
+      <nav aria-label="Filter" className="filter-bar">
         <ul>
           <li>
             <Link href="/ops/drivers" aria-current={!filter ? "page" : undefined}>
@@ -47,7 +47,7 @@ export default async function OpsDrivers({
           ))}
         </ul>
       </nav>
-      <section className="panel table-wrap">
+      <section className="panel panel-table table-wrap">
         {rows.length === 0 ? (
           <p className="empty">No drivers.</p>
         ) : (

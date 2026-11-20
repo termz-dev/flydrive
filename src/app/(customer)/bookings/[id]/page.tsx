@@ -14,6 +14,7 @@ import { bookingTimeline, candidateViews, driverContact } from "@/modules/bookin
 import { STATUS_LABEL } from "@/modules/booking/states";
 import { requireRole } from "@/modules/identity/session";
 import { fmtDateTime, naira } from "@/modules/shared/records";
+import { PACKAGE_LABEL, label } from "@/modules/shared/labels";
 import { getDb } from "@/platform/db";
 import { Notice } from "@/ui/blocks";
 import { StatusBadge } from "@/ui/StatusBadge";
@@ -62,12 +63,14 @@ export default async function BookingPage({
 
   return (
     <>
-      <p>
-        <Link href="/account">← My bookings</Link>
-      </p>
+      <Link className="back-link" href="/account">
+        ← My bookings
+      </Link>
       <div className="page-title-row">
-        <h1>Booking {b.ref}</h1>
-        <StatusBadge status={b.status} />
+        <div className="page-title">
+          <h1>Booking {b.ref}</h1>
+          <StatusBadge status={b.status} />
+        </div>
       </div>
       {sp.submitted ? (
         <p className="form-success" role="status">
@@ -226,7 +229,7 @@ export default async function BookingPage({
             <h2>Details</h2>
             <dl className="kv">
               <dt>Package</dt>
-              <dd>{b.pkg}</dd>
+              <dd>{label(PACKAGE_LABEL, b.pkg)}</dd>
               <dt>Starts</dt>
               <dd>{fmtDateTime(b.startsAt)}</dd>
               <dt>Ends</dt>

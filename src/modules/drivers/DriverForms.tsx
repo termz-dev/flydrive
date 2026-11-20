@@ -10,81 +10,101 @@ export function ApplyForm() {
     <ActionForm action={applyDriverAction} className="form-card">
       {(e) => (
         <>
-          <div className="form-grid">
-            <Field label="Full name" name="fullName" autoComplete="name" error={e.fullName} />
-            <Field
-              label="First name customers see"
-              name="firstName"
-              autoComplete="given-name"
-              error={e.firstName}
-            />
-            <Field label="Email" name="email" type="email" autoComplete="email" error={e.email} />
-            <Field
-              label="Phone number"
-              name="phone"
-              type="tel"
-              autoComplete="tel"
-              error={e.phone}
-            />
-          </div>
-          <Field
-            label="Password"
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            hint="At least 10 characters."
-            error={e.password}
-          />
-          <div className="form-grid">
-            <Field
-              label="Years of professional driving"
-              name="yearsExperience"
-              type="number"
-              min={0}
-              max={60}
-              inputMode="numeric"
-              error={e.yearsExperience}
-            />
-            <Select
-              label="Gender"
-              name="gender"
-              hint="Some customers ask for a female driver. You can choose not to say."
+          <fieldset className="form-section">
+            <legend>About you</legend>
+            <div className="form-grid">
+              <Field label="Full name" name="fullName" autoComplete="name" error={e.fullName} />
+              <Field
+                label="First name customers see"
+                name="firstName"
+                autoComplete="given-name"
+                error={e.firstName}
+              />
+              <Field
+                label="Phone number"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="0803 123 4567"
+                error={e.phone}
+              />
+              <Select
+                label="Gender"
+                name="gender"
+                hint="Some customers ask for a female driver."
+                options={[
+                  { value: "undisclosed", label: "Prefer not to say" },
+                  { value: "female", label: "Female" },
+                  { value: "male", label: "Male" },
+                ]}
+              />
+            </div>
+          </fieldset>
+          <fieldset className="form-section">
+            <legend>Your driving</legend>
+            <div className="form-grid">
+              <Field
+                label="Years of professional driving"
+                name="yearsExperience"
+                type="number"
+                min={0}
+                max={60}
+                inputMode="numeric"
+                error={e.yearsExperience}
+              />
+            </div>
+            <CheckboxGroup
+              legend="Cars you can drive"
+              name="transmissions"
               options={[
-                { value: "undisclosed", label: "Prefer not to say" },
-                { value: "female", label: "Female" },
-                { value: "male", label: "Male" },
+                { value: "automatic", label: "Automatic" },
+                { value: "manual", label: "Manual" },
               ]}
+              error={e.transmissions}
             />
-          </div>
-          <CheckboxGroup
-            legend="Cars you can drive"
-            name="transmissions"
-            options={[
-              { value: "automatic", label: "Automatic" },
-              { value: "manual", label: "Manual" },
-            ]}
-            error={e.transmissions}
-          />
-          <CheckboxGroup
-            legend="Where you can work"
-            name="cities"
-            options={[
-              { value: "lagos", label: "Lagos" },
-              { value: "ibadan", label: "Ibadan" },
-            ]}
-            error={e.cities}
-          />
-          <TextArea label="A little about you" name="bio" required={false} rows={3} />
-          <label className="check">
-            <input type="checkbox" name="consent" /> I agree that Flydrive may verify my identity,
-            licence and guarantor, as described in the privacy notice.
-          </label>
-          {e.consent ? <p className="field-msg">{e.consent}</p> : null}
-          <p className="field-hint">
-            Don&apos;t upload documents here. Our team will contact you to check them securely.
-          </p>
-          <div>
-            <SubmitButton pendingText="Sending application…">Apply</SubmitButton>
+            <CheckboxGroup
+              legend="Where you can work"
+              name="cities"
+              options={[
+                { value: "lagos", label: "Lagos" },
+                { value: "ibadan", label: "Ibadan" },
+              ]}
+              error={e.cities}
+            />
+            <TextArea
+              label="A little about you"
+              name="bio"
+              required={false}
+              rows={3}
+              hint="Shown to our team, not to customers."
+            />
+          </fieldset>
+          <fieldset className="form-section">
+            <legend>Your account</legend>
+            <div className="form-grid">
+              <Field label="Email" name="email" type="email" autoComplete="email" error={e.email} />
+              <Field
+                label="Password"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                hint="At least 10 characters."
+                error={e.password}
+              />
+            </div>
+            <div className="toggle-row">
+              <label className="check">
+                <input type="checkbox" name="consent" />I agree that Flydrive may verify my
+                identity, licence and guarantor, as described in the privacy notice.
+              </label>
+              {e.consent ? <p className="field-msg">{e.consent}</p> : null}
+            </div>
+          </fieldset>
+          <div className="form-actions">
+            <p className="field-hint">
+              Don&apos;t upload documents here. Our team will contact you to check them securely.
+            </p>
+            <SubmitButton pendingText="Sending application…">Send application</SubmitButton>
           </div>
         </>
       )}
@@ -135,7 +155,8 @@ export function AddUnavailability({ minStart }: { minStart: string }) {
               error={e.endsAt}
             />
           </div>
-          <div>
+          <div className="form-actions">
+            <p className="field-hint">You won&apos;t be offered jobs during this time.</p>
             <SubmitButton pendingText="Saving…">Block this time</SubmitButton>
           </div>
         </>

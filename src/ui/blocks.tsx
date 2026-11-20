@@ -62,7 +62,7 @@ export function Section({
             </div>
             {link ? (
               <Link className="section-link" href={link.href}>
-                {link.label} →
+                {link.label}
               </Link>
             ) : null}
           </div>
@@ -139,7 +139,7 @@ export function LinkCard<T extends string>({
       <h3>{title}</h3>
       <div className="muted">{children}</div>
       <span className="card-more" aria-hidden="true">
-        Learn more →
+        View details
       </span>
     </Link>
   );

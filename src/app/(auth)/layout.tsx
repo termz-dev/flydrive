@@ -11,10 +11,9 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <div style={{ height: 12 }} />
       <SiteHeader />
-      <main id="main" tabIndex={-1}>
-        <div className="auth-wrap">{children}</div>
+      <main id="main" tabIndex={-1} className="auth-page">
+        <div className="auth-card">{children}</div>
       </main>
       <SiteFooter />
     </>

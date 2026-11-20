@@ -26,9 +26,9 @@ export default function CarAndDriverPage() {
       <section className="page-header page-header-amber">
         <div className="container two-col" style={{ alignItems: "center", gap: 48 }}>
           <div>
-            <p>
-              <Link href="/services">← All services</Link>
-            </p>
+            <Link className="back" href="/services">
+              ← All services
+            </Link>
             <h1>No car? We&apos;ll bring the car and the driver.</h1>
             <p className="lead">
               One booking, one handler: a suitable vehicle and a vetted professional driver for a
@@ -140,7 +140,7 @@ export default function CarAndDriverPage() {
               <li>Pricing, damage and cover terms are shown before you pay</li>
             </ul>
             <Link href="/faq" className="section-link">
-              Read the FAQ →
+              Read the FAQ
             </Link>
           </div>
         </div>

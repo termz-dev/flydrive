@@ -47,12 +47,14 @@ export default async function AssignmentPage({ params }: { params: Promise<{ id:
   const stageDone = stage ? mine.some((h) => h.stage === stage) : false;
   return (
     <>
-      <p>
-        <Link href="/driver">← Driver home</Link>
-      </p>
+      <Link className="back-link" href="/driver">
+        ← Driver home
+      </Link>
       <div className="page-title-row">
-        <h1>Assignment {b.ref}</h1>
-        <StatusBadge status={b.status} />
+        <div className="page-title">
+          <h1>Assignment {b.ref}</h1>
+          <StatusBadge status={b.status} />
+        </div>
       </div>
       {!confirmed ? (
         <Notice title="Not confirmed yet" tone="pending">

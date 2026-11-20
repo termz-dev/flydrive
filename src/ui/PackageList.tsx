@@ -10,7 +10,7 @@ export interface PackageListItem {
 }
 
 /**
- * Large numbered package list. Hover or focus highlights an item and shows its summary in the
+ * Large package list (not numbered: packages are options, not steps). Hover or focus highlights an item and shows its summary in the
  * caption beside the image; every row is a real link, so it works without JavaScript.
  */
 export function PackageList({
@@ -33,7 +33,7 @@ export function PackageList({
           </p>
         ) : null}
       </div>
-      <ol className="number-list">
+      <ul className="number-list">
         {items.map((item, i) => (
           <li key={item.slug}>
             <Link
@@ -42,16 +42,13 @@ export function PackageList({
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
             >
-              <span className="num">{String(i + 1).padStart(2, "0")}</span>
               <span className="name">{item.name}</span>
-              <span className="go" aria-hidden="true">
-                →
-              </span>
+              <span className="go" aria-hidden="true" />
               <span className="sub">{item.summary}</span>
             </Link>
           </li>
         ))}
-      </ol>
+      </ul>
     </div>
   );
 }

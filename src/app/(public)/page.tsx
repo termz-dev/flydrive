@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SERVICE_PACKAGES } from "@/modules/catalog/packages";
+import { bookingsOpen } from "@/platform/config";
 import { Banner, CheckList, Section } from "@/ui/blocks";
 import { Clock } from "@/ui/icons";
 import { Media } from "@/ui/Media";
@@ -22,50 +23,53 @@ export default function HomePage() {
           <Media slot="hero" priority />
         </div>
         <div className="hero-content">
-          <p className="chip">Professional drivers · Lagos &amp; Ibadan</p>
+          <p className="chip">Professional drivers in Lagos and Ibadan</p>
           <h1 id="hero-title">Your car, our driver. Or both, arranged.</h1>
           <p className="lead">
             Book a vetted driver by the half-day, day, week or longer. You choose who drives, they
             accept the full job, and nothing is confirmed until your payment is verified.
           </p>
           <div className="button-row">
-            <Link className="button button-yellow button-arrow" href="/contact">
-              Talk to us
-            </Link>
-            <Link className="button" href="/services">
-              Explore services →
+            {bookingsOpen() ? (
+              <Link className="button button-yellow button-arrow" href="/bookings/new">
+                Book a driver
+              </Link>
+            ) : (
+              <Link className="button button-yellow button-arrow" href="/contact">
+                Talk to us
+              </Link>
+            )}
+            <Link className="button button-secondary" href="/services">
+              Explore services
             </Link>
           </div>
         </div>
       </section>
 
-      <Section
-        wide
-        id="choose"
-        eyebrow="Two ways to book"
-        title="Bring your car, or let us bring one."
-      >
-        <div className="city-grid">
-          <Link href="/services" className="city city-blue">
-            <span className="city-sub">I have a car</span>
-            <span className="city-name">Driver only</span>
-            <span className="city-sub">
-              A screened driver works your schedule, in your vehicle →
+      <Section wide id="choose" title="Bring your car, or let us bring one.">
+        <div className="choice-tiles">
+          <Link href="/services" className="choice-tile">
+            <span className="choice-kicker">I have a car</span>
+            <span className="choice-title">Driver only</span>
+            <span className="choice-body">
+              A screened driver works your schedule, in your own vehicle.
             </span>
+            <span className="choice-link">See packages</span>
           </Link>
-          <Link href="/services/car-and-driver" className="city">
-            <span className="city-sub">I need a car too</span>
-            <span className="city-name">Car + driver</span>
-            <span className="city-sub">
-              A suitable car and a vetted driver together — for visits and events →
+          <Link href="/services/car-and-driver" className="choice-tile choice-tile-dark">
+            <span className="choice-kicker">I need a car too</span>
+            <span className="choice-title">Car + driver</span>
+            <span className="choice-body">
+              A suitable car and a vetted driver together, for visits, events and business trips.
             </span>
+            <span className="choice-link">How car + driver works</span>
           </Link>
         </div>
-        <p className="muted" style={{ display: "flex", gap: 10, marginTop: 20 }}>
+        <p className="notice-line">
           <Clock />
           <span>
-            Standard notice is 3 days. Sooner? Our team checks availability by hand — short-notice
-            requests are never confirmed automatically.
+            Standard notice is 3 days. Need someone sooner? Our team checks availability by hand,
+            and short-notice requests are never confirmed automatically.
           </span>
         </p>
       </Section>
@@ -74,7 +78,6 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head">
             <div>
-              <p className="eyebrow">Packages</p>
               <h2 id="packages-heading">Booked by duration, not by trip.</h2>
             </div>
             <div style={{ maxWidth: 380 }}>
@@ -94,8 +97,8 @@ export default function HomePage() {
       <Section
         wide
         id="how"
-        eyebrow="How it works"
         title="Every step is a real check, not a promise."
+        intro="Choosing a driver isn't a booking, and paying isn't a confirmation until our team has checked it."
         link={{ href: "/how-it-works", label: "The full process" }}
       >
         <ProgressSteps
@@ -123,14 +126,13 @@ export default function HomePage() {
       <section className="section section-trust" aria-labelledby="trust-heading">
         <div className="container trust-grid">
           <div>
-            <p className="eyebrow">Trust &amp; safety</p>
             <h2 id="trust-heading">Screened before they ever see a booking.</h2>
             <p className="lead">
               Identity, licence and guarantor checks for every driver, with background checks being
               finalised. A named Flydrive handler for every confirmed booking.
             </p>
             <Link href="/trust-and-safety" className="section-link">
-              How we vet drivers →
+              How we vet drivers
             </Link>
           </div>
           <CheckList
@@ -144,20 +146,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Section wide id="cities" eyebrow="Where we operate" title="Two cities, to start.">
+      <Section wide id="cities" title="Two cities, to start.">
         <div className="city-grid">
           <Link href="/locations/lagos" className="city">
             <span className="city-name">Lagos</span>
-            <span className="city-sub">Island, Mainland and beyond →</span>
+            <span className="city-sub">Island, Mainland and beyond</span>
           </Link>
           <Link href="/locations/ibadan" className="city city-blue">
             <span className="city-name">Ibadan</span>
-            <span className="city-sub">Across the city →</span>
+            <span className="city-sub">Across the city</span>
           </Link>
         </div>
       </Section>
 
-      <div className="container" style={{ display: "grid", gap: 16 }}>
+      <div className="container banner-stack">
         <Banner
           tone="cream"
           title="Visiting Lagos or Ibadan?"

@@ -5,6 +5,7 @@ import { desc, eq } from "drizzle-orm";
 import { bookings } from "@/db/schema";
 import { requireRole } from "@/modules/identity/session";
 import { fmtDateTime } from "@/modules/shared/records";
+import { PACKAGE_LABEL, label } from "@/modules/shared/labels";
 import { getDb } from "@/platform/db";
 import { Notifications } from "@/ui/Notifications";
 import { StatusBadge } from "@/ui/StatusBadge";
@@ -55,7 +56,7 @@ export default async function AccountPage({
                       </td>
                       <td>{fmtDateTime(b.startsAt)}</td>
                       <td>
-                        {b.pkg}
+                        {label(PACKAGE_LABEL, b.pkg)}
                         {b.vehicleSource === "flydrive" ? " · car + driver" : ""}
                       </td>
                       <td>

@@ -6,6 +6,7 @@ import { bookings, users } from "@/db/schema";
 import { STATUS_LABEL, type BookingStatus } from "@/modules/booking/states";
 import { requireRole } from "@/modules/identity/session";
 import { fmtDateTime } from "@/modules/shared/records";
+import { CITY_LABEL, PACKAGE_LABEL, label } from "@/modules/shared/labels";
 import { getDb } from "@/platform/db";
 import { StatusBadge } from "@/ui/StatusBadge";
 
@@ -32,7 +33,7 @@ export default async function OpsBookings({
   return (
     <>
       <h1>Bookings</h1>
-      <nav aria-label="Filter" className="portal-nav" style={{ marginBottom: 16 }}>
+      <nav aria-label="Filter" className="filter-bar">
         <ul>
           <li>
             <Link href="/ops/bookings" aria-current={!sp.status && !sp.short ? "page" : undefined}>
@@ -51,7 +52,7 @@ export default async function OpsBookings({
           ))}
         </ul>
       </nav>
-      <section className="panel table-wrap">
+      <section className="panel panel-table table-wrap">
         {rows.length === 0 ? (
           <p className="empty">No bookings match.</p>
         ) : (
@@ -80,7 +81,7 @@ export default async function OpsBookings({
                   <td>{customer}</td>
                   <td>{fmtDateTime(b.startsAt)}</td>
                   <td>
-                    {b.pkg} · {b.city}
+                    {label(PACKAGE_LABEL, b.pkg)} · {label(CITY_LABEL, b.city)}
                     {b.vehicleSource === "flydrive" ? " · car + driver" : ""}
                   </td>
                   <td>

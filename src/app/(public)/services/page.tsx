@@ -15,7 +15,7 @@ export default function ServicesPage() {
     <>
       <PageHeader
         eyebrow="Services"
-        title="Driver packages for your own car"
+        title="Driver packages, booked by duration"
         lead="Booked by duration, not by trip. Every package is available driver-only, for your own car, or as car + driver."
       />
       <Section wide>

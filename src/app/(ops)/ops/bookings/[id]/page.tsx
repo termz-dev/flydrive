@@ -19,6 +19,7 @@ import { availableDrivers } from "@/modules/drivers/service";
 import { requireRole } from "@/modules/identity/session";
 import { ConfirmButtons, NoCandidateForm, OpsCancel, PublishForm } from "@/modules/ops/OpsForms";
 import { fmtDateTime, naira, userNames } from "@/modules/shared/records";
+import { CITY_LABEL, PACKAGE_LABEL, label } from "@/modules/shared/labels";
 import { getDb } from "@/platform/db";
 import { Notice } from "@/ui/blocks";
 import { StatusBadge } from "@/ui/StatusBadge";
@@ -78,14 +79,16 @@ export default async function OpsBooking({ params }: { params: Promise<{ id: str
 
   return (
     <>
-      <p>
-        <Link href="/ops/bookings">← Bookings</Link>
-      </p>
+      <Link className="back-link" href="/ops/bookings">
+        ← Bookings
+      </Link>
       <div className="page-title-row">
-        <h1>
-          {b.ref} {b.shortNotice ? <span className="badge badge-red">Short notice</span> : null}
-        </h1>
-        <StatusBadge status={b.status} />
+        <div className="page-title">
+          <h1>
+            {b.ref} {b.shortNotice ? <span className="badge badge-red">Short notice</span> : null}
+          </h1>
+          <StatusBadge status={b.status} />
+        </div>
       </div>
       <div className="cols">
         <div className="stack">
@@ -175,7 +178,7 @@ export default async function OpsBooking({ params }: { params: Promise<{ id: str
               {hv.map((h) => (
                 <p key={h.id}>
                   <strong>
-                    {h.stage} · {h.party}
+                    {h.stage === "pickup" ? "Pickup" : "Return"}, {h.party}
                   </strong>
                   {h.disputed ? <span className="badge badge-red"> disputed</span> : null}:{" "}
                   {h.conditionNote} {h.fuelLevel ? `(fuel: ${h.fuelLevel})` : ""}
@@ -218,14 +221,14 @@ export default async function OpsBooking({ params }: { params: Promise<{ id: str
                 <span className="muted">{cust.phone}</span>
               </dd>
               <dt>Package</dt>
-              <dd>{b.pkg}</dd>
+              <dd>{label(PACKAGE_LABEL, b.pkg)}</dd>
               <dt>When</dt>
               <dd>
                 {fmtDateTime(b.startsAt)} → {fmtDateTime(b.endsAt)}
               </dd>
               <dt>Where</dt>
               <dd>
-                {b.city} · {b.pickupArea}
+                {label(CITY_LABEL, b.city)} · {b.pickupArea}
               </dd>
               <dt>Car</dt>
               <dd>

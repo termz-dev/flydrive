@@ -42,7 +42,7 @@ export default async function OpsPayments() {
           </ul>
         )}
       </section>
-      <section className="panel table-wrap">
+      <section className="panel panel-table table-wrap">
         <h2>Recent payment attempts</h2>
         <table className="table">
           <thead>

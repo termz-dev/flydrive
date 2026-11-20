@@ -6,6 +6,7 @@ import { bookings, customerVehicles, fleetVehicles, offers } from "@/db/schema";
 import { OfferResponse } from "@/modules/drivers/DriverForms";
 import { requireRole } from "@/modules/identity/session";
 import { fmtDateTime, naira } from "@/modules/shared/records";
+import { PACKAGE_LABEL, label } from "@/modules/shared/labels";
 import { getDb } from "@/platform/db";
 import { Notice } from "@/ui/blocks";
 
@@ -32,9 +33,9 @@ export default async function OfferPage({ params }: { params: Promise<{ id: stri
   const open = o.status === "pending" && o.expiresAt > new Date();
   return (
     <div style={{ maxWidth: 760 }}>
-      <p>
-        <Link href="/driver">← Driver home</Link>
-      </p>
+      <Link className="back-link" href="/driver">
+        ← Driver home
+      </Link>
       <h1>Job offer {b.ref}</h1>
       {open ? (
         <p className="lead">
@@ -45,7 +46,7 @@ export default async function OfferPage({ params }: { params: Promise<{ id: stri
       <section className="panel">
         <dl className="kv">
           <dt>Package</dt>
-          <dd>{b.pkg}</dd>
+          <dd>{label(PACKAGE_LABEL, b.pkg)}</dd>
           <dt>Starts</dt>
           <dd>{fmtDateTime(b.startsAt)}</dd>
           <dt>Ends</dt>

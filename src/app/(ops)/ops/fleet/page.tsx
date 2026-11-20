@@ -12,7 +12,7 @@ export default async function OpsFleet() {
   const rows = await getDb().select().from(fleetVehicles).orderBy(asc(fleetVehicles.label));
   return (
     <div className="cols">
-      <section className="panel table-wrap">
+      <section className="panel panel-table table-wrap">
         <h1 style={{ fontSize: "1.8rem" }}>Fleet for car + driver</h1>
         <p className="muted">
           Cars Flydrive can provide. Supplier terms, deposits and cover are still being finalised

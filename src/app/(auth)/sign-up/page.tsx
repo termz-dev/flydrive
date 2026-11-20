@@ -14,7 +14,7 @@ export default function SignUpPage() {
         You&apos;ll use it to request drivers, choose who drives and follow each booking.
       </p>
       {bookingsOpen() ? <SignUpForm /> : <BookingNotOpen />}
-      <p style={{ marginTop: 20 }}>
+      <p className="auth-foot">
         Already have an account? <Link href="/sign-in">Sign in</Link> · Are you a driver?{" "}
         <Link href="/drivers/apply">Apply here</Link>
       </p>

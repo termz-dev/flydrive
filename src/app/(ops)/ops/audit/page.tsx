@@ -19,7 +19,7 @@ export default async function OpsAudit() {
     <>
       <h1>Audit log</h1>
       <p className="lead">Append-only record of staff and system actions.</p>
-      <section className="panel table-wrap">
+      <section className="panel panel-table table-wrap">
         <table className="table">
           <thead>
             <tr>

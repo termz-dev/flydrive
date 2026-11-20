@@ -68,17 +68,17 @@ const FAQS: { q: string; a: ReactNode }[] = [
 export default function FaqPage() {
   return (
     <>
-      <PageHeader eyebrow="FAQ" title="Frequently asked questions" />
+      <PageHeader title="Frequently asked questions" />
       <Section>
-        <dl className="faq">
-          {FAQS.map((f) => (
-            <div key={f.q}>
-              <dt>{f.q}</dt>
-              <dd>{f.a}</dd>
-            </div>
+        <div className="faq">
+          {FAQS.map((f, i) => (
+            <details key={f.q} open={i === 0}>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
           ))}
-        </dl>
-        <p style={{ marginTop: "2rem" }}>
+        </div>
+        <p style={{ marginTop: 32 }}>
           Still have a question? <Link href="/contact">Contact us</Link>.
         </p>
       </Section>
