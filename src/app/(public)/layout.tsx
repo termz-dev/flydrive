@@ -9,9 +9,7 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      {bookingsOpen() ? (
-        <div style={{ height: 12 }} />
-      ) : (
+      {bookingsOpen() ? null : (
         <div className="status-strip">
           <div className="container">
             <p>

@@ -11,10 +11,25 @@ export const metadata: Metadata = {
 export default function IbadanPage() {
   return (
     <LocationPage
-      city="Ibadan"
-      notes={[
-        "Whether you live in Ibadan or are visiting family there, Flydrive arranges a vetted driver for your car for the time you need.",
-        "It suits routine driving, occasions and visits, as well as trips to and from Lagos.",
+      city="ibadan"
+      lead="Vetted drivers across the city and for trips on to Lagos and beyond — in your car or with one we arrange."
+      uses={[
+        {
+          title: "Business days",
+          body: "Meetings, site visits and government offices. Full-day or weekly.",
+        },
+        {
+          title: "Events & owambe",
+          body: "Arrive and leave relaxed. Weekend or full-day, car + driver if you need one.",
+        },
+        {
+          title: "Family routines",
+          body: "School runs and errands with a consistent driver, weekly or monthly.",
+        },
+        {
+          title: "Lagos – Ibadan trips",
+          body: "Same-day or overnight runs between the two cities, quoted as a custom request.",
+        },
       ]}
     />
   );

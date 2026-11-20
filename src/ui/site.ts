@@ -7,17 +7,53 @@ export interface NavItem {
   match?: readonly string[];
 }
 
-export const PRIMARY_NAV: readonly NavItem[] = [
-  { href: "/services", label: "Services" },
-  { href: "/services/car-and-driver", label: "Car + driver" },
+export interface NavGroup {
+  label: string;
+  items: readonly (NavItem & { note?: string })[];
+}
+
+/** Header dropdowns and links (design/source/SiteHeader.dc.html). */
+export const NAV_SERVICES: NavGroup = {
+  label: "Services",
+  items: [
+    {
+      href: "/services",
+      label: "Driver for your car",
+      note: "A vetted driver in your own vehicle",
+    },
+    {
+      href: "/services/car-and-driver",
+      label: "Car + driver",
+      note: "We arrange the car and the driver",
+    },
+  ],
+};
+export const NAV_LOCATIONS: NavGroup = {
+  label: "Locations",
+  items: [
+    { href: "/locations/lagos", label: "Lagos" },
+    { href: "/locations/ibadan", label: "Ibadan" },
+  ],
+};
+export const NAV_LINKS: readonly NavItem[] = [
   { href: "/how-it-works", label: "How it works" },
   { href: "/trust-and-safety", label: "Trust & safety" },
-  { href: "/drivers", label: "Drive with us" },
+];
+export const NAV_VISITORS: NavItem = { href: "/for-visitors", label: "For visitors" };
+export const NAV_DRIVE: NavItem = { href: "/drivers", label: "Drive with us" };
+
+/** Every header destination in display order (also used by the mobile menu). */
+export const PRIMARY_NAV: readonly NavItem[] = [
+  ...NAV_SERVICES.items,
+  ...NAV_LINKS,
+  ...NAV_LOCATIONS.items,
+  NAV_VISITORS,
+  NAV_DRIVE,
 ];
 
 export const FOOTER_NAV: readonly { heading: string; items: readonly NavItem[] }[] = [
   {
-    heading: "Service",
+    heading: "Services",
     items: [
       { href: "/services", label: "All packages" },
       { href: "/services/car-and-driver", label: "Car + driver" },

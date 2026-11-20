@@ -10,6 +10,8 @@ export type PackageSlug = "half-day" | "full-day" | "weekly" | "monthly" | "week
 export interface ServicePackage {
   slug: PackageSlug;
   name: string;
+  /** Short label for tiles and tables; never hours or prices. */
+  short: string;
   summary: string;
   description: string[];
   suitedTo: string[];
@@ -20,6 +22,7 @@ export interface ServicePackage {
 export const SERVICE_PACKAGES: readonly ServicePackage[] = [
   {
     slug: "half-day",
+    short: "Part of a day",
     name: "Half-day",
     summary: "A vetted driver for part of a day.",
     description: [
@@ -31,6 +34,7 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
   },
   {
     slug: "full-day",
+    short: "A working day",
     name: "Full-day",
     summary: "A vetted driver for a full working day.",
     description: [
@@ -42,6 +46,7 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
   },
   {
     slug: "weekly",
+    short: "6 working days",
     name: "Weekly",
     summary: "The same driver for six working days.",
     description: [
@@ -53,6 +58,7 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
   },
   {
     slug: "monthly",
+    short: "Daily or live-in",
     name: "Monthly or longer",
     summary: "Longer-term driving, with daily resumption or a live-in arrangement.",
     description: [
@@ -64,6 +70,7 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
   },
   {
     slug: "weekend",
+    short: "Fri – Mon morning",
     name: "Weekend",
     summary: "A driver from Friday through to Monday morning.",
     description: [
@@ -75,6 +82,7 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
   },
   {
     slug: "custom",
+    short: "Quoted for you",
     name: "Custom request",
     summary: "Something different? Our operations team will look at it and quote.",
     description: [

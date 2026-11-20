@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360" fill="none" stroke="currentColor">
+  <!-- Flydrive road-line pattern. Set color via CSS (currentColor) to --fd-pattern-light / -dark / -amber. -->
+  <path d="M-20 90 C 180 130, 380 40, 640 110" stroke-width="10"/>
+  <path d="M420 -20 C 380 140, 460 240, 430 380" stroke-width="10"/>
+  <path d="M120 -20 L 90 380" stroke-width="6"/>
+  <path d="M-20 300 L 640 280" stroke-width="6"/>
+</svg>

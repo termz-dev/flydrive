@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flydrive — New booking request</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5C8C}a:hover{color:#0E1A2B}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #0E1A2B; background: #F7F8FA; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E4E7EC">
+<div style="max-width: 1240px; margin: 0 auto; padding: 16px 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0E1A2B">
+<svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0E1A2B"></rect><path d="M9 21 L16 9 L23 21" fill="none" stroke="#F5B53D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 17 H20" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"></path></svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px">Flydrive</span>
+</a>
+<nav aria-label="Account" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; font-weight: 500">
+<a href="BookingStatus.dc.html" style="text-decoration: none; color: #0E1A2B">My bookings</a>
+<a href="#" style="text-decoration: none; color: #0E1A2B">Vehicles</a>
+<a href="#" style="text-decoration: none; color: #0E1A2B">Support</a>
+<a href="#" style="text-decoration: none; color: #0E1A2B">Account</a>
+</nav>
+</div>
+</header>
+
+<main style="max-width: 1240px; margin: 0 auto; padding: 40px 32px 80px">
+<ol aria-label="Booking progress" style="list-style: none; margin: 0 0 36px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; font-weight: 500">
+<li style="background: #0E1A2B; color: #FFFFFF; padding: 8px 14px; border-radius: 999px" aria-current="step">1 · Request</li>
+<li style="background: #FFFFFF; border: 1px solid #E4E7EC; color: #475467; padding: 8px 14px; border-radius: 999px">2 · Choose driver</li>
+<li style="background: #FFFFFF; border: 1px solid #E4E7EC; color: #475467; padding: 8px 14px; border-radius: 999px">3 · Driver accepts</li>
+<li style="background: #FFFFFF; border: 1px solid #E4E7EC; color: #475467; padding: 8px 14px; border-radius: 999px">4 · Pay</li>
+<li style="background: #FFFFFF; border: 1px solid #E4E7EC; color: #475467; padding: 8px 14px; border-radius: 999px">5 · Confirmed</li>
+</ol>
+
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; letter-spacing: -0.02em">New booking</h1>
+<p style="margin: 10px 0 32px; font-size: 16px; color: #475467">Tell us what you need. You won’t be charged until a driver has accepted.</p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
+<form style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+
+<fieldset style="margin: 0; border: 1px solid #E4E7EC; background: #FFFFFF; border-radius: 16px; padding: 28px">
+<legend style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; padding: 0 6px">What do you need?</legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 8px">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="2">
+<button type="button" onClick="{{m.pick}}" aria-pressed="{{m.pressed}}" style="{{m.style}}">
+<span style="display: block; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">{{m.title}}</span>
+<span style="display: block; margin-top: 4px; font-size: 14px; color: #475467">{{m.sub}}</span>
+</button>
+</sc-for>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; border: 1px solid #E4E7EC; background: #FFFFFF; border-radius: 16px; padding: 28px">
+<legend style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; padding: 0 6px">Package</legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-top: 8px">
+<label style="border: 1px solid #D0D5DD; border-radius: 12px; padding: 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 15px"><input type="radio" name="pkg" style="margin-top: 3px"><span><strong>Half-day</strong></span></label>
+<label style="border: 2px solid #0E1A2B; background: #F2F4F7; border-radius: 12px; padding: 15px; display: flex; gap: 10px; align-items: flex-start; font-size: 15px"><input type="radio" name="pkg" checked style="margin-top: 3px"><span><strong>Full-day</strong></span></label>
+<label style="border: 1px solid #D0D5DD; border-radius: 12px; padding: 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 15px"><input type="radio" name="pkg" style="margin-top: 3px"><span><strong>Weekly</strong><br><span style="color: #5B6778; font-size: 13px">6 working days</span></span></label>
+<label style="border: 1px solid #D0D5DD; border-radius: 12px; padding: 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 15px"><input type="radio" name="pkg" style="margin-top: 3px"><span><strong>Monthly+</strong></span></label>
+<label style="border: 1px solid #D0D5DD; border-radius: 12px; padding: 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 15px"><input type="radio" name="pkg" style="margin-top: 3px"><span><strong>Weekend</strong><br><span style="color: #5B6778; font-size: 13px">Fri – Mon morning</span></span></label>
+<label style="border: 1px dashed #98A2B3; border-radius: 12px; padding: 16px; display: flex; gap: 10px; align-items: flex-start; font-size: 15px"><input type="radio" name="pkg" style="margin-top: 3px"><span><strong>Custom</strong><br><span style="color: #5B6778; font-size: 13px">Quoted by our team</span></span></label>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; border: 1px solid #E4E7EC; background: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<legend style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; padding: 0 6px">When &amp; where</legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">Start date<input type="text" value="Sat 21 Nov 2026" style="font: inherit; font-weight: 400; font-size: 15px; padding: 12px 14px; border: 2px solid #B54708; border-radius: 10px" aria-describedby="date-note"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">Start time<input type="text" value="08:00" style="font: inherit; font-weight: 400; font-size: 15px; padding: 12px 14px; border: 1px solid #D0D5DD; border-radius: 10px"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">City<select style="font: inherit; font-weight: 400; font-size: 15px; padding: 12px 14px; border: 1px solid #D0D5DD; border-radius: 10px; background: #FFFFFF"><option>Lagos</option><option>Ibadan</option></select></label>
+</div>
+<p id="date-note" style="margin: 0; background: #FFF6E5; border: 1px solid #F0D49A; border-radius: 10px; padding: 14px 16px; font-size: 14px; line-height: 1.55; color: #6B4A06; display: flex; gap: 10px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B54708" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><path d="M12 3l9 16H3z"></path><path d="M12 10v4M12 17h.01"></path></svg>
+<span><strong>This is less than 3 days away.</strong> Our operations team will check driver availability by hand before you can choose. We’ll let you know — it isn’t confirmed yet.</span>
+</p>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">Pickup area<input type="text" value="Lekki Phase 1" style="font: inherit; font-weight: 400; font-size: 15px; padding: 12px 14px; border: 1px solid #D0D5DD; border-radius: 10px"><span style="font-weight: 400; color: #5B6778; font-size: 13px">Area only for now. You’ll share the exact meeting point after confirmation.</span></label>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 15px"><input type="checkbox" style="width: 18px; height: 18px">Includes out-of-state travel with an overnight stay</label>
+</fieldset>
+
+<sc-if value="{{isOwn}}" hint-placeholder-val="{{true}}">
+<fieldset style="margin: 0; border: 1px solid #E4E7EC; background: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<legend style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; padding: 0 6px">Your vehicle</legend>
+<div style="border: 2px solid #0E1A2B; border-radius: 12px; padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between">
+<label style="display: flex; gap: 12px; align-items: center; font-size: 15px"><input type="radio" name="veh" checked><span><strong>Toyota Camry · Automatic</strong><br><span style="color: #5B6778; font-size: 13px">Plate ending ··· 42KJ</span></span></label>
+<span style="font-size: 12px; font-weight: 600; background: #E6F4EC; color: #1A6B43; padding: 6px 10px; border-radius: 999px">Authorised</span>
+</div>
+<a href="#" style="font-size: 15px; font-weight: 600">+ Add another vehicle</a>
+</fieldset>
+</sc-if>
+<sc-if value="{{isCar}}" hint-placeholder-val="{{false}}">
+<fieldset style="margin: 0; border: 1px solid #E4E7EC; background: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<legend style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; padding: 0 6px">Vehicle class</legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px">
+<sc-for list="{{classes}}" as="c" hint-placeholder-count="3">
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="{{c.style}}"><span style="display: block; font-weight: 600; font-size: 16px">{{c.name}}</span><span style="display: block; margin-top: 4px; font-size: 13px; color: #5B6778">{{c.note}}</span></button>
+</sc-for>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500; max-width: 320px">Luggage<input type="text" value="3 large suitcases" style="font: inherit; font-weight: 400; font-size: 15px; padding: 12px 14px; border: 1px solid #D0D5DD; border-radius: 10px"></label>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #475467">We’ll confirm the specific car with your booking. Deposit and fuel terms are shown before you pay.</p>
+</fieldset>
+</sc-if>
+
+<fieldset style="margin: 0; border: 1px solid #E4E7EC; background: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<legend style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; padding: 0 6px">The assignment</legend>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500">Duties and itinerary<textarea rows="4" style="font: inherit; font-weight: 400; font-size: 15px; padding: 12px 14px; border: 1px solid #D0D5DD; border-radius: 10px; resize: vertical">Drive me to two client meetings on Victoria Island, then a dinner in Ikeja. Return home by 20:00.</textarea></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 500; max-width: 240px">Passengers<input type="text" value="2 adults" style="font: inherit; font-weight: 400; font-size: 15px; padding: 12px 14px; border: 1px solid #D0D5DD; border-radius: 10px"></label>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 500">Preferences <span style="font-weight: 400; color: #5B6778">— we’ll try, but can’t guarantee these</span></span>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 15px"><input type="checkbox" style="width: 18px; height: 18px">Female driver</label>
+<label style="display: flex; gap: 10px; align-items: center; font-size: 15px"><input type="checkbox" style="width: 18px; height: 18px">Long-distance experience</label>
+</div>
+</fieldset>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end">
+<a href="Main.dc.html" style="text-decoration: none; color: #0E1A2B; font-weight: 600; font-size: 15px; padding: 14px 20px; border-radius: 10px; border: 1px solid #D0D5DD; background: #FFFFFF">Save draft</a>
+<a href="Candidates.dc.html" style="text-decoration: none; background: #0E1A2B; color: #FFFFFF; font-weight: 600; font-size: 15px; padding: 14px 24px; border-radius: 10px">Submit request</a>
+</div>
+</form>
+
+<aside style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 18px">Summary</h2>
+<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 16px; font-size: 14px">
+<dt style="color: #5B6778">Service</dt><dd style="margin: 0; font-weight: 500">{{modeLabel}}</dd>
+<dt style="color: #5B6778">Package</dt><dd style="margin: 0; font-weight: 500">Full-day</dd>
+<dt style="color: #5B6778">Date</dt><dd style="margin: 0; font-weight: 500">Sat 21 Nov, 08:00</dd>
+<dt style="color: #5B6778">Area</dt><dd style="margin: 0; font-weight: 500">Lekki Phase 1, Lagos</dd>
+<dt style="color: #5B6778">Vehicle</dt><dd style="margin: 0; font-weight: 500">{{vehicleLabel}}</dd>
+<dt style="color: #5B6778">Price</dt><dd style="margin: 0; font-weight: 500">Shown before payment</dd>
+</dl>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 24px; font-size: 14px; line-height: 1.6; color: #475467">
+<h2 style="margin: 0 0 10px; font-family: 'Space Grotesk', sans-serif; font-size: 16px; color: #0E1A2B">Good to know</h2>
+<p style="margin: 0 0 8px">You cover fuel, tolls, parking and washing.</p>
+<p style="margin: 0">Changing the vehicle or adding passengers later means a quick re-check.</p>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1800}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { mode: 'car', cls: 'suv' };
+}
+renderVals() {
+var self = this;
+var mode = this.state.mode;
+var cls = this.state.cls;
+var card = function (on) {
+return 'font: inherit; color: #0E1A2B; text-align: left; cursor: pointer; border-radius: 12px; min-height: 44px; ' + (on ? 'border: 2px solid #0E1A2B; background: #F2F4F7; padding: 17px' : 'border: 1px solid #D0D5DD; background: #FFFFFF; padding: 18px');
+};
+var modes = [
+{ id: 'own', title: 'Driver for my car', sub: 'I’ll provide the vehicle' },
+{ id: 'car', title: 'Car + driver', sub: 'Flydrive arranges both' }
+].map(function (m) {
+return { title: m.title, sub: m.sub, pressed: m.id === mode ? 'true' : 'false', style: card(m.id === mode), pick: function () { self.setState({ mode: m.id }); } };
+});
+var classList = [
+{ id: 'saloon', name: 'Saloon', note: 'Up to [N] passengers' },
+{ id: 'suv', name: 'SUV', note: 'Up to [N] passengers' },
+{ id: 'van', name: 'Minivan', note: 'Up to [N] passengers' }
+];
+var classes = classList.map(function (c) {
+return { name: c.name, note: c.note, pressed: c.id === cls ? 'true' : 'false', style: card(c.id === cls), pick: function () { self.setState({ cls: c.id }); } };
+});
+var clsName = '';
+classList.forEach(function (c) { if (c.id === cls) { clsName = c.name; } });
+return {
+modes: modes,
+classes: classes,
+isOwn: mode === 'own',
+isCar: mode === 'car',
+modeLabel: mode === 'own' ? 'Driver for my car' : 'Car + driver',
+vehicleLabel: mode === 'own' ? 'Camry · Automatic' : clsName + ' (Flydrive)'
+};
+}
+}
+</script>
+</body>
+</html>

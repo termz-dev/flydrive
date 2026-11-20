@@ -52,7 +52,15 @@ describe("service catalogue", () => {
   });
 
   it("contains no prices or invented hours (OPEN decisions)", () => {
-    const allowedKeys = ["slug", "name", "summary", "description", "suitedTo", "beingFinalised"];
+    const allowedKeys = [
+      "slug",
+      "name",
+      "short",
+      "summary",
+      "description",
+      "suitedTo",
+      "beingFinalised",
+    ];
     for (const p of SERVICE_PACKAGES) {
       expect(Object.keys(p).sort()).toEqual([...allowedKeys].sort());
       const text = JSON.stringify(p);
@@ -66,10 +74,10 @@ describe("navigation state", () => {
     const { isCurrent, PRIMARY_NAV } = await import("@/ui/site");
     const current = (path: string) =>
       PRIMARY_NAV.filter((i) => isCurrent(path, i)).map((i) => i.label);
-    expect(current("/services")).toEqual(["Services"]);
-    expect(current("/services/weekly")).toEqual(["Services"]);
+    expect(current("/services")).toEqual(["Driver for your car"]);
+    expect(current("/services/weekly")).toEqual(["Driver for your car"]);
     expect(current("/services/car-and-driver")).toEqual(["Car + driver"]);
-    expect(current("/locations/ibadan")).toEqual([]);
+    expect(current("/locations/ibadan")).toEqual(["Ibadan"]);
     expect(current("/drivers/apply")).toEqual(["Drive with us"]);
     expect(current("/about")).toEqual([]);
   });

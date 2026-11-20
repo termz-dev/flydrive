@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flydrive — Choose a driver</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1F5C8C}a:hover{color:#0E1A2B}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #0E1A2B; background: #F7F8FA; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #E4E7EC">
+<div style="max-width: 1240px; margin: 0 auto; padding: 16px 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #0E1A2B">
+<svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0E1A2B"></rect><path d="M9 21 L16 9 L23 21" fill="none" stroke="#F5B53D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 17 H20" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"></path></svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px">Flydrive</span>
+</a>
+<nav aria-label="Account" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px; font-weight: 500">
+<a href="BookingStatus.dc.html" style="text-decoration: none; color: #0E1A2B">My bookings</a>
+<a href="#" style="text-decoration: none; color: #0E1A2B">Vehicles</a>
+<a href="#" style="text-decoration: none; color: #0E1A2B">Support</a>
+<a href="#" style="text-decoration: none; color: #0E1A2B">Account</a>
+</nav>
+</div>
+</header>
+
+<main style="max-width: 1240px; margin: 0 auto; padding: 40px 32px 80px">
+<ol aria-label="Booking progress" style="list-style: none; margin: 0 0 36px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; font-weight: 500">
+<li style="background: #E6F4EC; color: #1A6B43; padding: 8px 14px; border-radius: 999px">1 · Request ✓</li>
+<li style="background: #0E1A2B; color: #FFFFFF; padding: 8px 14px; border-radius: 999px" aria-current="step">2 · Choose driver</li>
+<li style="background: #FFFFFF; border: 1px solid #E4E7EC; color: #475467; padding: 8px 14px; border-radius: 999px">3 · Driver accepts</li>
+<li style="background: #FFFFFF; border: 1px solid #E4E7EC; color: #475467; padding: 8px 14px; border-radius: 999px">4 · Pay</li>
+<li style="background: #FFFFFF; border: 1px solid #E4E7EC; color: #475467; padding: 8px 14px; border-radius: 999px">5 · Confirmed</li>
+</ol>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end; margin-bottom: 28px">
+<div style="max-width: 680px">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; letter-spacing: -0.02em">Choose your driver</h1>
+<p style="margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: #475467">These drivers are vetted, suit your request and are free on Sat 21 Nov — our team checked availability for your short-notice request. You’ll see more of their profile once your booking is confirmed.</p>
+</div>
+<p style="margin: 0; font-size: 14px; color: #475467">Full-day · Lekki Phase 1 · Camry (Automatic)</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+<sc-for list="{{drivers}}" as="d" hint-placeholder-count="4">
+<button type="button" onClick="{{d.pick}}" aria-pressed="{{d.pressed}}" style="{{d.cardStyle}}">
+<span style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%">
+<span style="width: 84px; height: 84px; border-radius: 50%; overflow: hidden; display: block; position: relative" aria-hidden="true">
+<span style="{{d.photoStyle}}"></span>
+</span>
+<span style="{{d.radioStyle}}" aria-hidden="true"></span>
+</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 600">{{d.name}}</span>
+<span style="display: flex; flex-direction: column; gap: 10px; width: 100%; font-size: 14px">
+<span style="display: flex; justify-content: space-between; border-top: 1px solid #EEF0F3; padding-top: 10px"><span style="color: #5B6778">Experience</span><strong>{{d.years}} years</strong></span>
+<span style="display: flex; justify-content: space-between; border-top: 1px solid #EEF0F3; padding-top: 10px"><span style="color: #5B6778">Checks</span><strong style="color: #1A6B43">Verified</strong></span>
+<span style="display: flex; justify-content: space-between; border-top: 1px solid #EEF0F3; padding-top: 10px"><span style="color: #5B6778">Flydrive training</span><strong style="color: #8A5A00">Pending</strong></span>
+</span>
+</button>
+</sc-for>
+</div>
+
+<div style="margin-top: 28px; background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; padding: 24px 28px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 520px; min-width: 0; font-size: 15px; line-height: 1.6">
+<sc-if value="{{hasPick}}" hint-placeholder-val="{{true}}">
+<strong>You’ve chosen {{pickedName}}.</strong> We’ll send them the full assignment. They’ll accept or decline — you won’t pay anything until they accept, and we never swap drivers without asking you.
+</sc-if>
+<sc-if value="{{noPick}}" hint-placeholder-val="{{false}}">
+<strong>Select a driver to continue.</strong> Choosing a driver doesn’t confirm the booking.
+</sc-if>
+</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<a href="BookingNew.dc.html" style="text-decoration: none; color: #0E1A2B; font-weight: 600; font-size: 15px; padding: 14px 20px; border-radius: 10px; border: 1px solid #D0D5DD">Edit request</a>
+<a href="BookingStatus.dc.html" style="text-decoration: none; background: #0E1A2B; color: #FFFFFF; font-weight: 600; font-size: 15px; padding: 14px 24px; border-radius: 10px">Send offer to driver</a>
+</div>
+</div>
+
+<p style="margin: 20px 0 0; font-size: 13px; color: #5B6778">Sample driver data for design review. Photos stay blurred until your booking is confirmed.</p>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1240}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { picked: 'tunde' };
+}
+renderVals() {
+var self = this;
+var base = [
+{ id: 'tunde', name: 'Tunde', years: 9, hue: '#6E7F99' },
+{ id: 'amaka', name: 'Amaka', years: 6, hue: '#8E7468' },
+{ id: 'ibrahim', name: 'Ibrahim', years: 12, hue: '#5F7F74' },
+{ id: 'segun', name: 'Segun', years: 4, hue: '#7A6E92' }
+];
+var picked = this.state.picked;
+var drivers = base.map(function (d) {
+var on = d.id === picked;
+return {
+name: d.name,
+years: d.years,
+pressed: on ? 'true' : 'false',
+pick: function () { self.setState({ picked: d.id }); },
+cardStyle: 'font: inherit; color: #0E1A2B; text-align: left; cursor: pointer; background: #FFFFFF; border-radius: 18px; padding: ' + (on ? '23px' : '24px') + '; border: ' + (on ? '2px solid #0E1A2B; box-shadow: 0 10px 24px rgba(14,26,43,0.10)' : '1px solid #E4E7EC') + '; display: flex; flex-direction: column; align-items: flex-start; gap: 16px',
+photoStyle: 'position: absolute; inset: -12px; background: radial-gradient(circle at 50% 38%, #E9D9C8 0 20%, transparent 21%), radial-gradient(ellipse at 50% 95%, ' + d.hue + ' 0 42%, transparent 43%), #C9CFD8; filter: blur(7px)',
+radioStyle: 'width: 22px; height: 22px; border-radius: 50%; box-sizing: border-box; border: ' + (on ? '7px solid #0E1A2B' : '2px solid #98A2B3') + '; background: #FFFFFF'
+};
+});
+var pickedName = '';
+base.forEach(function (d) { if (d.id === picked) { pickedName = d.name; } });
+return { drivers: drivers, hasPick: !!picked, noPick: !picked, pickedName: pickedName };
+}
+}
+</script>
+</body>
+</html>

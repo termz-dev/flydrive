@@ -21,7 +21,17 @@ export default async function NewBookingPage({
         Tell us what you need. You&apos;ll choose your driver before anything is charged.
       </p>
       {bookingsOpen() ? (
-        <RequestForm defaultPackage={sp.package} minStart={toLagosInput(new Date())} />
+        <RequestForm
+          prefill={{
+            pkg: sp.package,
+            city: sp.city,
+            service: sp.service,
+            vehicleClass: sp.class,
+            start: sp.date && /^\d{4}-\d{2}-\d{2}$/.test(sp.date) ? sp.date : undefined,
+            area: sp.area?.slice(0, 120),
+          }}
+          minStart={toLagosInput(new Date())}
+        />
       ) : (
         <BookingNotOpen />
       )}

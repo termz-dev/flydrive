@@ -5,14 +5,25 @@ import { SERVICE_PACKAGES } from "@/modules/catalog/packages";
 import { ActionForm, Field, Select, SubmitButton, TextArea } from "@/ui/form";
 import { requestBookingAction } from "./actions";
 
+export interface RequestPrefill {
+  pkg?: string | undefined;
+  city?: string | undefined;
+  service?: string | undefined;
+  vehicleClass?: string | undefined;
+  start?: string | undefined;
+  area?: string | undefined;
+}
+
 export function RequestForm({
-  defaultPackage,
+  prefill = {},
   minStart,
 }: {
-  defaultPackage?: string | undefined;
+  prefill?: RequestPrefill;
   minStart: string;
 }) {
-  const [source, setSource] = useState<"customer" | "flydrive">("customer");
+  const [source, setSource] = useState<"customer" | "flydrive">(
+    prefill.service === "car" ? "flydrive" : "customer",
+  );
   const [overnight, setOvernight] = useState(false);
   return (
     <ActionForm action={requestBookingAction} className="form-card">
@@ -24,13 +35,14 @@ export function RequestForm({
               <Select
                 label="Package"
                 name="pkg"
-                defaultValue={defaultPackage ?? "full-day"}
+                defaultValue={prefill.pkg ?? "full-day"}
                 options={SERVICE_PACKAGES.map((p) => ({ value: p.slug, label: p.name }))}
                 error={e.pkg}
               />
               <Select
                 label="City"
                 name="city"
+                defaultValue={prefill.city === "ibadan" ? "ibadan" : "lagos"}
                 options={[
                   { value: "lagos", label: "Lagos" },
                   { value: "ibadan", label: "Ibadan" },
@@ -91,6 +103,7 @@ export function RequestForm({
               <Select
                 label="Vehicle class"
                 name="vehicleClass"
+                defaultValue={prefill.vehicleClass ?? "saloon"}
                 hint="We confirm the exact car with your booking."
                 options={[
                   { value: "saloon", label: "Saloon" },
@@ -109,6 +122,7 @@ export function RequestForm({
                 label="Start"
                 name="startsAt"
                 type="datetime-local"
+                {...(prefill.start ? { defaultValue: `${prefill.start}T08:00` } : {})}
                 min={minStart}
                 hint="Lagos time"
                 error={e.startsAt}
@@ -125,6 +139,7 @@ export function RequestForm({
             <Field
               label="Pickup area"
               name="pickupArea"
+              {...(prefill.area ? { defaultValue: prefill.area } : {})}
               placeholder="Lekki Phase 1"
               hint="An area is enough for now. You'll share the exact meeting point once the booking is confirmed."
               error={e.pickupArea}

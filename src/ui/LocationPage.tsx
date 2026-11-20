@@ -1,44 +1,92 @@
 import Link from "next/link";
-import { BookingNotOpen, PageHeader, Section } from "./blocks";
+import { EXAMPLE_AREAS } from "@/content/site";
+import { bookingsOpen } from "@/platform/config";
+import { Section } from "./blocks";
+import { ArrowRight } from "./icons";
 
-export function LocationPage({ city, notes }: { city: "Lagos" | "Ibadan"; notes: string[] }) {
-  const other = city === "Lagos" ? "Ibadan" : "Lagos";
+type City = "lagos" | "ibadan";
+
+export function LocationPage({
+  city,
+  lead,
+  uses,
+}: {
+  city: City;
+  lead: string;
+  uses: readonly { title: string; body: string }[];
+}) {
+  const name = city === "lagos" ? "Lagos" : "Ibadan";
+  const open = bookingsOpen();
   return (
     <>
-      <PageHeader
-        eyebrow="Location"
-        title={`Drivers for your car in ${city}`}
-        lead={`${city} is one of Flydrive's two pilot cities. Book a vetted driver for your own car, or car + driver, for the time you need.`}
-      />
-      <Section>
-        {notes.map((n) => (
-          <p key={n}>{n}</p>
-        ))}
-        <h3>Coverage</h3>
-        <p>
-          The exact service area within {city} is being confirmed with our operations team and will
-          be checked when you request. We will tell you honestly if we can&apos;t cover your
-          location.
-        </p>
-        <h3>
-          Trips between {city} and {other}
-        </h3>
-        <p>
-          Interstate trips are possible as custom requests. If the driver stays overnight out of
-          state, you provide somewhere to sleep and freshen up; meals are not required.
-        </p>
-      </Section>
-      <Section tone="tint">
-        <BookingNotOpen />
-        <p>
-          <Link href="/services">See services</Link> ·{" "}
-          <Link href="/services/car-and-driver">Car + driver</Link> ·{" "}
+      <section className="page-hero page-hero-dark">
+        <div className="container page-hero-split">
+          <div>
+            <nav className="city-switch" aria-label="Cities">
+              <Link href="/locations/lagos" aria-current={city === "lagos" ? "page" : undefined}>
+                Lagos
+              </Link>
+              <Link href="/locations/ibadan" aria-current={city === "ibadan" ? "page" : undefined}>
+                Ibadan
+              </Link>
+            </nav>
+            <h1>{name}</h1>
+            <p className="lead">{lead}</p>
+          </div>
           <Link
-            href={`/locations/${other.toLowerCase()}` as "/locations/lagos" | "/locations/ibadan"}
+            href={open ? `/bookings/new?city=${city}` : "/contact"}
+            className="button button-yellow button-arrow"
           >
-            {other}
+            {open ? `Book in ${name}` : "Talk to us"}
           </Link>
-        </p>
+        </div>
+      </section>
+
+      <Section
+        id="areas"
+        title="Where we pick up"
+        intro="Example areas. The final service area is confirmed by our operations team, and we check every request by hand."
+      >
+        <ul className="chips">
+          {EXAMPLE_AREAS[city].map((a) => (
+            <li key={a}>{a}</li>
+          ))}
+          <li className="chip-ask">Elsewhere? Ask us</li>
+        </ul>
+      </Section>
+
+      <Section id="uses" title="How people use Flydrive here">
+        <div className="grid-4">
+          {uses.map((u) => (
+            <div key={u.title} className="card">
+              <h3>{u.title}</h3>
+              <p>{u.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section>
+        <div className="grid-2">
+          <Link href="/services" className="route-card">
+            <div>
+              <strong>Driver for your car</strong>
+              <span>Available in {name}</span>
+            </div>
+            <span className="arrow">
+              <ArrowRight />
+            </span>
+          </Link>
+          <Link href="/services/car-and-driver" className="route-card route-card-amber">
+            <div>
+              <strong>Car + driver</strong>
+              <span>Available in {name}</span>
+            </div>
+            <span className="arrow">
+              <ArrowRight />
+            </span>
+          </Link>
+        </div>
       </Section>
     </>
   );

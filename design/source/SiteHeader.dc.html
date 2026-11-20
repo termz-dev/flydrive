@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flydrive — Site header</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<header style="{{headerStyle}}">
+<div style="max-width: 1320px; margin: 0 auto; padding: 0 40px; height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+
+<a href="Main.dc.html" style="{{logoStyle}}">
+<svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="{{logoBg}}"></rect><path d="M9 21 L16 9 L23 21" fill="none" stroke="#F5B53D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 17 H20" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"></path></svg>
+<span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.02em">Flydrive</span>
+</a>
+
+<sc-if value="{{wide}}" hint-placeholder-val="{{true}}">
+<nav aria-label="Main" style="display: flex; align-items: stretch; height: 80px; gap: 4px; font-size: 15px; font-weight: 500">
+<div style="position: relative; display: flex; align-items: center">
+<button type="button" onClick="{{toggleServices}}" aria-expanded="{{servicesExpanded}}" aria-haspopup="true" style="{{servicesBtnStyle}}">Services<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{servicesChevron}}"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{servicesOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; top: 72px; left: -16px; width: 420px; background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; box-shadow: 0 18px 40px rgba(14,26,43,0.14); padding: 10px; display: flex; flex-direction: column; gap: 2px">
+<a href="Services.dc.html" style="text-decoration: none; color: #0E1A2B; display: flex; gap: 14px; align-items: flex-start; padding: 14px; border-radius: 12px">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #F2F4F7; display: flex; align-items: center; justify-content: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="3.5"></circle><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"></path></svg></span>
+<span><span style="display: block; font-weight: 600; font-size: 15px">Driver for your car</span><span style="display: block; margin-top: 2px; font-size: 14px; color: #475467">A vetted driver in your own vehicle</span></span>
+</a>
+<a href="CarAndDriver.dc.html" style="text-decoration: none; color: #0E1A2B; display: flex; gap: 14px; align-items: flex-start; padding: 14px; border-radius: 12px">
+<span style="width: 40px; height: 40px; border-radius: 10px; background: #FFF1D6; display: flex; align-items: center; justify-content: center; flex: none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16v-4l2-5h14l2 5v4z"></path><path d="M3 12h18"></path><circle cx="7.5" cy="16.5" r="1.8"></circle><circle cx="16.5" cy="16.5" r="1.8"></circle></svg></span>
+<span><span style="display: block; font-weight: 600; font-size: 15px">Car + driver</span><span style="display: block; margin-top: 2px; font-size: 14px; color: #475467">We arrange the car and the driver</span></span>
+</a>
+<a href="Services.dc.html" style="text-decoration: none; color: #1F5C8C; font-weight: 600; font-size: 14px; padding: 12px 14px; margin-top: 4px; border-top: 1px solid #EEF0F3">Compare all packages →</a>
+</div>
+</sc-if>
+</div>
+<a href="HowItWorks.dc.html" aria-current="{{howCurrent}}" style="{{howStyle}}">How it works</a>
+<a href="TrustSafety.dc.html" aria-current="{{trustCurrent}}" style="{{trustStyle}}">Trust &amp; safety</a>
+<div style="position: relative; display: flex; align-items: center">
+<button type="button" onClick="{{toggleLocations}}" aria-expanded="{{locationsExpanded}}" aria-haspopup="true" style="{{locationsBtnStyle}}">Locations<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="{{locationsChevron}}"><path d="M6 9l6 6 6-6"></path></svg></button>
+<sc-if value="{{locationsOpen}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; top: 72px; left: -16px; width: 240px; background: #FFFFFF; border: 1px solid #E4E7EC; border-radius: 16px; box-shadow: 0 18px 40px rgba(14,26,43,0.14); padding: 8px; display: flex; flex-direction: column">
+<a href="Lagos.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 14px; border-radius: 10px; font-weight: 600; font-size: 15px">Lagos</a>
+<a href="Ibadan.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 14px; border-radius: 10px; font-weight: 600; font-size: 15px">Ibadan</a>
+</div>
+</sc-if>
+</div>
+<a href="Visitors.dc.html" aria-current="{{visitorsCurrent}}" style="{{visitorsStyle}}">For visitors</a>
+</nav>
+
+<div style="display: flex; align-items: center; gap: 6px; flex: none">
+<a href="Drivers.dc.html" aria-current="{{driversCurrent}}" style="{{driversStyle}}">Drive with us</a>
+<span aria-hidden="true" style="{{dividerStyle}}"></span>
+<a href="BookingNew.dc.html" style="{{signInStyle}}">Sign in</a>
+<a href="BookingNew.dc.html" style="text-decoration: none; background: #F5B53D; color: #0E1A2B; font-weight: 600; font-size: 15px; padding: 14px 24px; border-radius: 999px; margin-left: 4px">Book now</a>
+</div>
+</sc-if>
+
+<sc-if value="{{narrow}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; align-items: center; gap: 8px">
+<a href="BookingNew.dc.html" style="text-decoration: none; background: #F5B53D; color: #0E1A2B; font-weight: 600; font-size: 15px; padding: 11px 18px; border-radius: 999px">Book now</a>
+<button type="button" onClick="{{toggleMenu}}" aria-expanded="{{menuExpanded}}" aria-label="Menu" style="{{menuBtnStyle}}">
+<sc-if value="{{menuClosed}}" hint-placeholder-val="{{true}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></sc-if>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></sc-if>
+</button>
+</div>
+</sc-if>
+</div>
+
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+<nav aria-label="Mobile" style="background: #FFFFFF; color: #0E1A2B; border-top: 1px solid #E4E7EC; padding: 12px 20px 24px; display: flex; flex-direction: column; font-size: 17px; font-weight: 500">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5B6778; padding: 12px 4px 4px">Services</span>
+<a href="Services.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 4px; border-bottom: 1px solid #EEF0F3">Driver for your car</a>
+<a href="CarAndDriver.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 4px; border-bottom: 1px solid #EEF0F3">Car + driver</a>
+<a href="HowItWorks.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 4px; border-bottom: 1px solid #EEF0F3">How it works</a>
+<a href="TrustSafety.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 4px; border-bottom: 1px solid #EEF0F3">Trust &amp; safety</a>
+<a href="Lagos.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 4px; border-bottom: 1px solid #EEF0F3">Lagos</a>
+<a href="Ibadan.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 4px; border-bottom: 1px solid #EEF0F3">Ibadan</a>
+<a href="Visitors.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 4px; border-bottom: 1px solid #EEF0F3">For visitors</a>
+<a href="Drivers.dc.html" style="text-decoration: none; color: #0E1A2B; padding: 12px 4px; border-bottom: 1px solid #EEF0F3">Drive with us</a>
+<a href="BookingNew.dc.html" style="text-decoration: none; color: #0E1A2B; font-weight: 600; text-align: center; padding: 14px; margin-top: 16px; border: 1px solid #D0D5DD; border-radius: 999px">Sign in</a>
+</nav>
+</sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["home","services","car","how","trust","locations","visitors","drivers","other"],"default":"home"},"tone":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":1440,"height":81}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { open: null, width: 1440 };
+this.onResize = this.onResize.bind(this);
+}
+componentDidMount() {
+this.onResize();
+window.addEventListener('resize', this.onResize);
+}
+componentWillUnmount() {
+window.removeEventListener('resize', this.onResize);
+}
+onResize() {
+var w = window.innerWidth || 1440;
+if (w !== this.state.width) { this.setState({ width: w }); }
+}
+renderVals() {
+var self = this;
+var active = this.props.active ?? 'home';
+var open = this.state.open;
+var wide = this.state.width >= 1100;
+var dark = (this.props.tone ?? 'light') === 'dark';
+var ink = dark ? '#FFFFFF' : '#0B0F14';
+var toggle = function (name) { return function () { self.setState({ open: open === name ? null : name }); }; };
+var base = 'font: inherit; text-decoration: none; background: transparent; border: 0; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 80px; box-sizing: border-box; padding: 0 14px; color: ' + ink + '; ';
+var linkStyle = function (on) {
+return base + (on ? 'font-weight: 600; box-shadow: inset 0 -2px 0 #F5B53D' : 'font-weight: 500; opacity: ' + (dark ? '0.82' : '1') + '; box-shadow: inset 0 -2px 0 transparent');
+};
+var chevron = function (isOpen) { return 'transition: transform 0.15s; transform: rotate(' + (isOpen ? '180deg' : '0deg') + ')'; };
+var cur = function (on) { return on ? 'page' : 'false'; };
+var servicesOn = active === 'services' || active === 'car';
+return {
+wide: wide,
+narrow: !wide,
+servicesOpen: wide && open === 'services',
+locationsOpen: wide && open === 'locations',
+servicesExpanded: open === 'services' ? 'true' : 'false',
+locationsExpanded: open === 'locations' ? 'true' : 'false',
+toggleServices: toggle('services'),
+toggleLocations: toggle('locations'),
+toggleMenu: toggle('menu'),
+menuOpen: !wide && open === 'menu',
+menuClosed: !(open === 'menu'),
+menuExpanded: open === 'menu' ? 'true' : 'false',
+servicesBtnStyle: linkStyle(servicesOn),
+servicesChevron: chevron(open === 'services'),
+locationsBtnStyle: linkStyle(active === 'locations'),
+locationsChevron: chevron(open === 'locations'),
+howStyle: linkStyle(active === 'how'), howCurrent: cur(active === 'how'),
+trustStyle: linkStyle(active === 'trust'), trustCurrent: cur(active === 'trust'),
+visitorsStyle: linkStyle(active === 'visitors'), visitorsCurrent: cur(active === 'visitors'),
+driversStyle: 'text-decoration: none; color: ' + ink + '; opacity: ' + (active === 'drivers' ? '1; font-weight: 600' : (dark ? '0.72' : '0.7') + '; font-weight: 500') + '; font-size: 15px; padding: 12px 10px',
+headerStyle: 'font-family: Inter, system-ui, sans-serif; position: relative; z-index: 50; color: ' + ink + '; background: ' + (dark ? '#0B0F14' : '#FFFFFF') + '; border-bottom: 1px solid ' + (dark ? 'rgba(255,255,255,0.08)' : '#ECEEF1'),
+logoStyle: 'display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; color: ' + ink,
+logoBg: dark ? '#1C2430' : '#0B0F14',
+dividerStyle: 'width: 1px; height: 24px; margin: 0 8px; background: ' + (dark ? 'rgba(255,255,255,0.14)' : '#E4E7EC'),
+signInStyle: 'text-decoration: none; font-weight: 500; font-size: 15px; padding: 12px 12px; color: ' + ink,
+menuBtnStyle: 'width: 44px; height: 44px; border-radius: 999px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: ' + ink + '; background: transparent; border: 1px solid ' + (dark ? 'rgba(255,255,255,0.2)' : '#D0D5DD'),
+driversCurrent: cur(active === 'drivers')
+};
+}
+}
+</script>
+</body>
+</html>

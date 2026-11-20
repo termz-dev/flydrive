@@ -1,0 +1,287 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-19T13:16:02Z"
+ },
+ "title": "Flydrive",
+ "launch": {
+  "view": "focused",
+  "file": "Main.dc.html"
+ },
+ "pages": [],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 4700,
+   "title": "/ · Home",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Services.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 2500,
+   "title": "/services",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "CarAndDriver.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 2600,
+   "title": "/services/car-and-driver",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "HowItWorks.dc.html": {
+   "x": 4560,
+   "y": 0,
+   "w": 1440,
+   "h": 2200,
+   "title": "/how-it-works",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "SiteHeader.dc.html": {
+   "x": 6080,
+   "y": 0,
+   "w": 1440,
+   "h": 81,
+   "title": "Component · Site header"
+  },
+  "SiteFooter.dc.html": {
+   "x": 6080,
+   "y": 208,
+   "w": 1440,
+   "h": 420,
+   "title": "Component · Site footer"
+  },
+  "TrustSafety.dc.html": {
+   "x": 0,
+   "y": 5120,
+   "w": 1440,
+   "h": 2300,
+   "title": "/trust-and-safety",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Lagos.dc.html": {
+   "x": 1520,
+   "y": 5120,
+   "w": 1440,
+   "h": 1800,
+   "title": "/locations/lagos",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Ibadan.dc.html": {
+   "x": 3040,
+   "y": 5120,
+   "w": 1440,
+   "h": 1800,
+   "title": "/locations/ibadan",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Visitors.dc.html": {
+   "x": 4560,
+   "y": 5120,
+   "w": 1440,
+   "h": 1900,
+   "title": "/for-visitors",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Drivers.dc.html": {
+   "x": 0,
+   "y": 7840,
+   "w": 1440,
+   "h": 2100,
+   "title": "/drivers",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "DriverApply.dc.html": {
+   "x": 1520,
+   "y": 7840,
+   "w": 1440,
+   "h": 1800,
+   "title": "/drivers/apply",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "About.dc.html": {
+   "x": 3040,
+   "y": 7840,
+   "w": 1440,
+   "h": 2400,
+   "title": "/about",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "FAQ.dc.html": {
+   "x": 4560,
+   "y": 7840,
+   "w": 1440,
+   "h": 1900,
+   "title": "/faq",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Contact.dc.html": {
+   "x": 0,
+   "y": 10660,
+   "w": 1440,
+   "h": 1500,
+   "title": "/contact",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Privacy.dc.html": {
+   "x": 1520,
+   "y": 10660,
+   "w": 1440,
+   "h": 1600,
+   "title": "/privacy",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Terms.dc.html": {
+   "x": 3040,
+   "y": 10660,
+   "w": 1440,
+   "h": 1600,
+   "title": "/terms",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "NotFound.dc.html": {
+   "x": 4560,
+   "y": 10660,
+   "w": 1440,
+   "h": 1000,
+   "title": "404",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "BookingNew.dc.html": {
+   "x": 0,
+   "y": 12680,
+   "w": 1440,
+   "h": 1800,
+   "title": "Customer · New booking request",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Candidates.dc.html": {
+   "x": 1520,
+   "y": 12680,
+   "w": 1440,
+   "h": 1240,
+   "title": "Customer · Choose a driver",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "BookingStatus.dc.html": {
+   "x": 3040,
+   "y": 12680,
+   "w": 1440,
+   "h": 1500,
+   "title": "Customer · Booking status & payment",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Ops.dc.html": {
+   "x": 4560,
+   "y": 12680,
+   "w": 1440,
+   "h": 1400,
+   "title": "Operations · Dashboard (/ops)",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "DriverOffer.dc.html": {
+   "x": 6080,
+   "y": 12680,
+   "w": 390,
+   "h": 1180,
+   "title": "Driver · Assignment offer (mobile)",
+   "is_interactive": true
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "Services.dc.html",
+  "CarAndDriver.dc.html",
+  "HowItWorks.dc.html",
+  "SiteHeader.dc.html",
+  "SiteFooter.dc.html",
+  "TrustSafety.dc.html",
+  "Lagos.dc.html",
+  "Ibadan.dc.html",
+  "Visitors.dc.html",
+  "Drivers.dc.html",
+  "DriverApply.dc.html",
+  "About.dc.html",
+  "FAQ.dc.html",
+  "Contact.dc.html",
+  "Privacy.dc.html",
+  "Terms.dc.html",
+  "NotFound.dc.html",
+  "BookingNew.dc.html",
+  "Candidates.dc.html",
+  "BookingStatus.dc.html",
+  "Ops.dc.html",
+  "DriverOffer.dc.html"
+ ],
+ "notes": {
+  "row1": {
+   "x": 0,
+   "y": -300,
+   "text": "Website · Home, services & how it works",
+   "kind": "title1",
+   "maxW": 6000
+  },
+  "rowc": {
+   "x": 6080,
+   "y": -300,
+   "text": "Shared components",
+   "kind": "title1",
+   "maxW": 1440
+  },
+  "row2": {
+   "x": 0,
+   "y": 4820,
+   "text": "Website · Trust, locations & visitors",
+   "kind": "title1",
+   "maxW": 6000
+  },
+  "row3": {
+   "x": 0,
+   "y": 7540,
+   "text": "Website · Drivers, about & FAQ",
+   "kind": "title1",
+   "maxW": 6000
+  },
+  "row4": {
+   "x": 0,
+   "y": 10360,
+   "text": "Website · Contact, legal & 404",
+   "kind": "title1",
+   "maxW": 6000
+  },
+  "row5": {
+   "x": 0,
+   "y": 12380,
+   "text": "Product · Customer, operations & driver portals",
+   "kind": "title1",
+   "maxW": 6470
+  }
+ },
+ "designSystems": []
+}

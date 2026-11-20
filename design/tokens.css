@@ -1,0 +1,77 @@
+/* Flydrive design tokens: premium system (20 Nov 2026). Source: design/source/Main.dc.html, SiteHeader, SiteFooter */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+  /* Colour */
+  --fd-ink: #0B0F14;            /* primary text, dark sections, primary buttons */
+  --fd-ink-2: #121821;          /* dark panel / map background */
+  --fd-ink-3: #1C2633;          /* dark tile */
+  --fd-on-ink: #FFFFFF;
+  --fd-on-ink-muted: #AEB7C4;
+  --fd-on-ink-soft: #D5DBE3;
+  --fd-on-ink-line: rgba(255, 255, 255, 0.08);
+
+  --fd-amber: #F5B53D;          /* accent FILL only; never text on white */
+  --fd-amber-deep: #F0A92A;
+  --fd-amber-text: #3D2B06;     /* body text on amber */
+  --fd-amber-tint: #FFFBF2;
+
+  --fd-blue: #1F5C8C;
+  --fd-green: #1A6B43;          /* verified / success */
+  --fd-green-soft: #E6F4EC;
+  --fd-warn-text: #8A5A00;
+  --fd-warn-soft: #FFF6E5;
+  --fd-danger: #B42318;
+  --fd-danger-soft: #FEF3F2;
+
+  --fd-text: #0B0F14;
+  --fd-muted: #475467;          /* body secondary, passes 4.5:1 on white */
+  --fd-subtle: #5B6778;         /* labels */
+  --fd-faint: #8A94A3;          /* step numbers only (large text) */
+  --fd-line: #ECEEF1;
+  --fd-line-strong: #D0D5DD;
+  --fd-surface: #F4F5F7;        /* light panels */
+  --fd-surface-2: #EEF0F3;      /* section band behind cards */
+  --fd-field: #F6F7F9;          /* filled inputs in booking widget */
+  --fd-bg: #FFFFFF;
+
+  /* Road-line pattern strokes (decorative SVG behind cards) */
+  --fd-pattern-light: #ECEEF1;
+  --fd-pattern-dark: rgba(255, 255, 255, 0.035);
+  --fd-pattern-amber: #FBEFD6;
+
+  /* Type */
+  --fd-font-display: "Space Grotesk", system-ui, sans-serif;  /* weight 600 */
+  --fd-font-body: Inter, system-ui, sans-serif;
+  --fd-text-hero: 80px;      /* letter-spacing -0.045em, line-height 0.98 */
+  --fd-text-h2: 56px;        /* -0.04em, 1.02 */
+  --fd-text-h3: 40px;        /* -0.035em */
+  --fd-text-card: 24px;
+  --fd-text-lead: 19px;
+  --fd-text-body: 16px;
+  --fd-text-sm: 14px;
+  --fd-text-xs: 13px;
+
+  /* Shape and layout */
+  --fd-container: 1320px;
+  --fd-gutter: 40px;
+  --fd-section-y: 112px;
+  --fd-radius-input: 14px;
+  --fd-radius-card: 22px;
+  --fd-radius-panel: 28px;
+  --fd-radius-feature: 32px;
+  --fd-radius-pill: 999px;   /* all buttons */
+  --fd-btn-h: 56px;          /* 18px vertical padding, 24–40px horizontal */
+  --fd-touch: 44px;
+  --fd-header-h: 80px;
+  --fd-shadow-float: 0 20px 40px rgba(0, 0, 0, 0.25);
+  --fd-shadow-widget: 0 40px 80px rgba(0, 0, 0, 0.45);
+  --fd-scrim: linear-gradient(to top, rgba(11,15,20,0.92) 40%, rgba(11,15,20,0.55) 75%, rgba(11,15,20,0));
+}
+
+body {
+  margin: 0;
+  font-family: var(--fd-font-body);
+  color: var(--fd-text);
+  background: var(--fd-bg);
+}
