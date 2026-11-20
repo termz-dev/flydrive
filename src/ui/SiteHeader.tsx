@@ -16,7 +16,10 @@ export function SiteHeader() {
           <NavLinks items={PRIMARY_NAV} />
         </nav>
         {/* Booking isn't open, so the design's "Book now"/"Sign in" become Contact until it is. */}
-        <Link href="/contact" className="button button-small desktop-only">
+        <Link
+          href="/contact"
+          className="button button-yellow button-arrow button-small desktop-only"
+        >
           Contact us
         </Link>
         <MobileMenu items={PRIMARY_NAV} />

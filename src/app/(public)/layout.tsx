@@ -11,6 +11,7 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
       <div className="status-strip">
         <div className="container">
           <p>
+            <span className="status-dot" aria-hidden="true" />
             <strong>Pilot in preparation:</strong> online booking for Lagos and Ibadan is not open
             yet.
           </p>

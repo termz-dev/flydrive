@@ -188,7 +188,7 @@ export function Banner({
   tone: "cream" | "grey" | "navy";
   action?: { href: Route; label: string; style?: "primary" | "secondary" };
 }) {
-  const btn = action?.style === "secondary" ? "button button-secondary" : "button";
+  const btn = action?.style === "secondary" ? "button button-secondary" : "button button-arrow";
   return (
     <div className={`banner banner-${tone}`}>
       <div>

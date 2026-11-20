@@ -1,8 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SERVICE_PACKAGES } from "@/modules/catalog/packages";
-import { Banner, CardGrid, CheckList, LinkCard, Section, Steps } from "@/ui/blocks";
-import { CarIcon, Clock, PersonIcon } from "@/ui/icons";
+import { Banner, Section } from "@/ui/blocks";
+import { Clock } from "@/ui/icons";
+import { Media } from "@/ui/Media";
+import { PackageList } from "@/ui/PackageList";
 
 export const metadata: Metadata = {
   title: { absolute: "Flydrive — vetted professional drivers in Lagos & Ibadan" },
@@ -11,75 +13,91 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+/** Facts we can state today. No customer counts, ratings or reviews until they exist. */
+const FACTS = [
+  { label: "Cities", value: "2" },
+  { label: "Notice for a standard booking", value: "3 days" },
+  { label: "Checks before a driver is offered", value: "3" },
+  { label: "Ways to book: driver only, or car + driver", value: "2" },
+  { label: "Short-notice requests auto-confirmed", value: "0" },
+] as const;
+
 export default function HomePage() {
   return (
     <>
-      <section className="hero">
-        <div className="container">
-          <p className="eyebrow" style={{ color: "var(--amber)" }}>
-            Lagos · Ibadan
-          </p>
-          <h1>A vetted professional driver — in your car, or in one we arrange.</h1>
+      <section className="hero-frame" aria-labelledby="hero-title">
+        <div className="hero-media">
+          <Media slot="hero" priority />
+        </div>
+        <div className="hero-content">
+          <p className="chip">Professional drivers · Lagos &amp; Ibadan</p>
+          <h1 id="hero-title">Your car, our driver. Or both, arranged.</h1>
           <p className="lead">
-            Book by the half-day, day, week or longer. We screen every driver, you choose who you
-            want, and nothing is confirmed until your payment is verified.
+            Book a vetted driver by the half-day, day, week or longer. You choose who drives, they
+            accept the full job, and nothing is confirmed until your payment is verified.
           </p>
-          <div className="choice-grid">
-            <Link href="/services" className="choice">
-              <span className="choice-icon">
-                <PersonIcon />
-              </span>
-              <span className="choice-kicker">I have a car</span>
-              <span className="choice-title">Driver for your car</span>
-              <span className="choice-body">
-                A screened driver works your schedule in your own vehicle.
-              </span>
-              <span className="choice-more">See packages →</span>
+          <div className="button-row">
+            <Link className="button button-yellow button-arrow" href="/contact">
+              Talk to us
             </Link>
-            <Link href="/services/car-and-driver" className="choice choice-amber">
-              <span className="choice-icon">
-                <CarIcon />
-              </span>
-              <span className="choice-kicker">I need a car too</span>
-              <span className="choice-title">Car + driver</span>
-              <span className="choice-body">
-                We arrange a suitable car and a vetted driver together — ideal for visitors and
-                events.
-              </span>
-              <span className="choice-more">How car + driver works →</span>
+            <Link className="button" href="/services">
+              Explore services →
             </Link>
           </div>
-          <p className="hero-note">
-            <Clock />
-            <span>
-              Standard notice is 3 days. Need someone sooner? Our team checks availability by hand —
-              we never auto-confirm a short-notice request.
-            </span>
-          </p>
         </div>
       </section>
 
       <Section
         wide
-        id="packages"
-        eyebrow="Packages"
-        title="Booked by duration, not by trip."
-        intro="Flydrive isn't ride hailing. Every package is available as driver-only or car + driver."
-        link={{ href: "/services", label: "Compare all packages" }}
+        id="choose"
+        eyebrow="Two ways to book"
+        title="Bring your car, or let us bring one."
       >
-        <CardGrid>
-          {SERVICE_PACKAGES.map((p) => (
-            <LinkCard
-              key={p.slug}
-              href={`/services/${p.slug}`}
-              title={p.name}
-              dashed={p.slug === "custom"}
-            >
-              {p.summary}
-            </LinkCard>
-          ))}
-        </CardGrid>
+        <div className="city-grid">
+          <Link href="/services" className="city city-blue">
+            <span className="city-sub">I have a car</span>
+            <span className="city-name">Driver only</span>
+            <span className="city-sub">
+              A screened driver works your schedule, in your vehicle →
+            </span>
+          </Link>
+          <Link href="/services/car-and-driver" className="city">
+            <span className="city-sub">I need a car too</span>
+            <span className="city-name">Car + driver</span>
+            <span className="city-sub">
+              A suitable car and a vetted driver together — for visits and events →
+            </span>
+          </Link>
+        </div>
+        <p className="muted" style={{ display: "flex", gap: 10, marginTop: 20 }}>
+          <Clock />
+          <span>
+            Standard notice is 3 days. Sooner? Our team checks availability by hand — short-notice
+            requests are never confirmed automatically.
+          </span>
+        </p>
       </Section>
+
+      <section className="panel-dark" aria-labelledby="packages-heading">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Packages</p>
+              <h2 id="packages-heading">Booked by duration, not by trip.</h2>
+            </div>
+            <div style={{ maxWidth: 380 }}>
+              <p>
+                Flydrive isn&apos;t ride hailing. Every package is available driver-only or as car +
+                driver.
+              </p>
+            </div>
+          </div>
+          <PackageList
+            items={SERVICE_PACKAGES.map(({ slug, name, summary }) => ({ slug, name, summary }))}
+            media={<Media slot="packages" sizes="(max-width: 900px) 100vw, 40vw" />}
+          />
+        </div>
+      </section>
 
       <Section
         wide
@@ -88,53 +106,63 @@ export default function HomePage() {
         title="Every step is a real check, not a promise."
         link={{ href: "/how-it-works", label: "The full process" }}
       >
-        <Steps
-          items={[
-            {
-              title: "Tell us what you need",
-              body: <p>Dates, area, duties — and whether you need a car.</p>,
-            },
-            {
-              title: "Choose your driver",
-              body: <p>They see the full assignment and accept or decline.</p>,
-            },
-            {
-              title: "Pay, then we confirm",
-              body: <p>We verify your payment before anything is confirmed.</p>,
-            },
-            {
-              title: "Handover & go",
-              body: <p>The car&apos;s condition is recorded by both sides.</p>,
-            },
-          ]}
-        />
+        <ol className="steps">
+          <li>
+            <h3>Tell us what you need</h3>
+            <p>Dates, area, duties — and whether you need a car.</p>
+          </li>
+          <li>
+            <h3>Choose your driver</h3>
+            <p>They see the full assignment and accept or decline.</p>
+          </li>
+          <li>
+            <h3>Pay, then we confirm</h3>
+            <p>We verify your payment before anything is confirmed.</p>
+          </li>
+          <li>
+            <h3>Handover &amp; go</h3>
+            <p>The car&apos;s condition is recorded by both sides.</p>
+          </li>
+        </ol>
       </Section>
 
-      <section className="section section-tint" aria-labelledby="trust-heading">
-        <div className="container two-col" style={{ alignItems: "center", gap: "56px" }}>
-          <div>
-            <p className="eyebrow">Trust &amp; safety</p>
-            <h2 id="trust-heading">Screened before they ever see a booking.</h2>
-            <p className="lead" style={{ fontSize: "1.0625rem" }}>
-              Identity, licence and guarantor checks for every driver. A named Flydrive handler for
+      <section className="section" style={{ paddingTop: 0 }} aria-labelledby="why-heading">
+        <div className="container why-grid">
+          <div className="why-copy">
+            <p className="eyebrow">Why Flydrive</p>
+            <h2 id="why-heading">Vetted on purpose. Confirmed for real.</h2>
+            <p className="lead">
+              Every driver passes identity, licence and guarantor checks before they can be offered
+              to anyone. You see who you&apos;re choosing, and a named Flydrive handler looks after
               every confirmed booking.
             </p>
-            <Link href="/trust-and-safety" className="section-link">
-              How we vet drivers →
-            </Link>
+            <div>
+              <Link className="button button-arrow" href="/trust-and-safety">
+                How we vet drivers
+              </Link>
+            </div>
           </div>
-          <CheckList
-            items={[
-              { label: "Identity verified" },
-              { label: "Licence checked" },
-              { label: "Guarantor on file" },
-              { label: "Background check", note: "Process being finalised" },
-            ]}
-          />
+          <div className="media-frame">
+            <Media slot="why" sizes="(max-width: 1000px) 100vw, 30vw" />
+          </div>
+          <div className="facts">
+            <dl>
+              {FACTS.map((f) => (
+                <div key={f.label}>
+                  <dt>{f.label}</dt>
+                  <dd>{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="facts-note">
+              Choosing a driver isn&apos;t a booking, and paying isn&apos;t a confirmation — until
+              our team checks it.
+            </p>
+          </div>
         </div>
       </section>
 
-      <Section wide id="cities" title="Where we operate">
+      <Section wide id="cities" eyebrow="Where we operate" title="Two cities, to start.">
         <div className="city-grid">
           <Link href="/locations/lagos" className="city">
             <span className="city-name">Lagos</span>
@@ -147,11 +175,11 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <div className="container" style={{ display: "grid", gap: 24, paddingBottom: 96 }}>
+      <div className="container" style={{ display: "grid", gap: 16 }}>
         <Banner
           tone="cream"
           title="Visiting Lagos or Ibadan?"
-          body="Car + driver covers your whole stay — business trips, weddings, family visits. Tell us your dates and we'll plan the rest with you."
+          body="Car + driver covers your whole stay — business trips, weddings, family visits. Tell us your dates and we'll plan it with you."
           action={{ href: "/for-visitors", label: "Plan your visit" }}
         />
         <Banner

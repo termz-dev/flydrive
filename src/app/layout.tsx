@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { getConfig } from "@/platform/config";
 import { SITE_NAME, SITE_TAGLINE } from "@/ui/site";
-import "@fontsource-variable/inter/wght.css";
+import "@fontsource-variable/instrument-sans/index.css";
 import "./globals.css";
 
 export function generateMetadata(): Metadata {
@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export const viewport: Viewport = { themeColor: "#0f172a", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#f6efe4", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

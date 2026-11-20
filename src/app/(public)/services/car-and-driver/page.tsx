@@ -35,7 +35,7 @@ export default function CarAndDriverPage() {
               day, a week or your whole stay.
             </p>
             <div className="button-row">
-              <Link className="button" href="/contact">
+              <Link className="button button-yellow button-arrow" href="/contact">
                 Ask about car + driver
               </Link>
               <Link className="button button-secondary" href="/how-it-works">
@@ -127,12 +127,7 @@ export default function CarAndDriverPage() {
                   "Conferences",
                   "Interstate travel",
                 ].map((t) => (
-                  <li
-                    key={t}
-                    style={{ background: "#1e293b", color: "#e2e8f0", borderColor: "#334155" }}
-                  >
-                    {t}
-                  </li>
+                  <li key={t}>{t}</li>
                 ))}
               </ul>
             </div>

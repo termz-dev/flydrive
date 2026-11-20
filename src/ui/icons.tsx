@@ -2,16 +2,16 @@
 export function Logo({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
-      <rect width="32" height="32" rx="8" fill="#0F172A" />
+      <rect width="32" height="32" rx="9" fill="#FFC83D" />
       <path
         d="M9 21 L16 9 L23 21"
         fill="none"
-        stroke="#D97706"
+        stroke="#24201B"
         strokeWidth="2.6"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path d="M12 17 H20" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M12 17 H20" stroke="#24201B" strokeWidth="2.2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -23,7 +23,7 @@ export function Tick() {
       height="20"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#0F766E"
+      stroke="#2F7A4F"
       strokeWidth="2.4"
       strokeLinecap="round"
       aria-hidden="true"
@@ -40,7 +40,7 @@ export function Clock() {
       height="18"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#D97706"
+      stroke="#24201B"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -54,7 +54,7 @@ export function Clock() {
 
 const stroke = {
   fill: "none",
-  stroke: "#0F172A",
+  stroke: "#24201B",
   strokeWidth: 1.8,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
@@ -87,8 +87,8 @@ export function SaloonArt() {
     <svg width="150" height="70" viewBox="0 0 150 70" {...art} aria-hidden="true">
       <path d="M8 50 V40 L28 36 L48 18 H100 L120 36 L142 40 V50 Z" />
       <path d="M54 22 L44 36 H114 L98 22 Z" />
-      <circle cx="38" cy="52" r="9" fill="#F8FAFC" />
-      <circle cx="114" cy="52" r="9" fill="#F8FAFC" />
+      <circle cx="38" cy="52" r="9" fill="#ECE2D2" />
+      <circle cx="114" cy="52" r="9" fill="#ECE2D2" />
     </svg>
   );
 }
@@ -99,8 +99,8 @@ export function SuvArt() {
       <path d="M8 56 V40 L26 34 L40 14 H112 L126 34 L142 40 V56 Z" />
       <path d="M46 18 L38 34 H118 L108 18 Z" />
       <path d="M76 18 V34" />
-      <circle cx="38" cy="58" r="10" fill="#F8FAFC" />
-      <circle cx="114" cy="58" r="10" fill="#F8FAFC" />
+      <circle cx="38" cy="58" r="10" fill="#ECE2D2" />
+      <circle cx="114" cy="58" r="10" fill="#ECE2D2" />
     </svg>
   );
 }
@@ -112,8 +112,8 @@ export function MinivanArt() {
       <path d="M20 20 H52 V34 H20 Z" />
       <path d="M60 20 H92 V34 H60 Z" />
       <path d="M100 20 H116 L130 34 H100 Z" />
-      <circle cx="38" cy="58" r="10" fill="#F8FAFC" />
-      <circle cx="114" cy="58" r="10" fill="#F8FAFC" />
+      <circle cx="38" cy="58" r="10" fill="#ECE2D2" />
+      <circle cx="114" cy="58" r="10" fill="#ECE2D2" />
     </svg>
   );
 }
