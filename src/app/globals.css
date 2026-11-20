@@ -1151,3 +1151,79 @@ ol {
     padding-bottom: 240px;
   }
 }
+
+/* ---------- progressive steps (home "How it works") ---------- */
+.steps-progress li::before {
+  content: none;
+}
+.step-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  /* run the line past the card edge so it reads as one path across the gap */
+  margin-right: -45px;
+  position: relative;
+  z-index: 1;
+}
+.step-num {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--yellow);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+.step-line {
+  flex: 1;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--line);
+  overflow: hidden;
+}
+.step-fill {
+  display: block;
+  height: 100%;
+  background: var(--yellow);
+  transform-origin: left center;
+}
+@media (max-width: 560px) {
+  .step-head {
+    margin-right: 0;
+  }
+  .step-line {
+    display: none;
+  }
+}
+
+/* Transitions run only on the way in; hiding ("ready") is instant */
+.steps-progress[data-anim="in"] li {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i) * 0.55s);
+}
+.steps-progress[data-anim="in"] .step-num {
+  transition:
+    background-color 0.3s ease,
+    transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+  transition-delay: calc(var(--i) * 0.55s + 0.2s);
+}
+.steps-progress[data-anim="in"] .step-fill {
+  transition: transform 0.5s ease-in-out;
+  transition-delay: calc(var(--i) * 0.55s + 0.4s);
+}
+.steps-progress[data-anim="ready"] li {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.steps-progress[data-anim="ready"] .step-num {
+  background: var(--sand);
+  transform: scale(0.8);
+}
+.steps-progress[data-anim="ready"] .step-fill {
+  transform: scaleX(0);
+}

@@ -5,6 +5,7 @@ import { Banner, Section } from "@/ui/blocks";
 import { Clock } from "@/ui/icons";
 import { Media } from "@/ui/Media";
 import { PackageList } from "@/ui/PackageList";
+import { ProgressSteps } from "@/ui/ProgressSteps";
 
 export const metadata: Metadata = {
   title: { absolute: "Flydrive — vetted professional drivers in Lagos & Ibadan" },
@@ -106,24 +107,26 @@ export default function HomePage() {
         title="Every step is a real check, not a promise."
         link={{ href: "/how-it-works", label: "The full process" }}
       >
-        <ol className="steps">
-          <li>
-            <h3>Tell us what you need</h3>
-            <p>Dates, area, duties — and whether you need a car.</p>
-          </li>
-          <li>
-            <h3>Choose your driver</h3>
-            <p>They see the full assignment and accept or decline.</p>
-          </li>
-          <li>
-            <h3>Pay, then we confirm</h3>
-            <p>We verify your payment before anything is confirmed.</p>
-          </li>
-          <li>
-            <h3>Handover &amp; go</h3>
-            <p>The car&apos;s condition is recorded by both sides.</p>
-          </li>
-        </ol>
+        <ProgressSteps
+          items={[
+            {
+              title: "Tell us what you need",
+              body: <p>Dates, area, duties — and whether you need a car.</p>,
+            },
+            {
+              title: "Choose your driver",
+              body: <p>They see the full assignment and accept or decline.</p>,
+            },
+            {
+              title: "Pay, then we confirm",
+              body: <p>We verify your payment before anything is confirmed.</p>,
+            },
+            {
+              title: "Handover & go",
+              body: <p>The car&apos;s condition is recorded by both sides.</p>,
+            },
+          ]}
+        />
       </Section>
 
       <section className="section" style={{ paddingTop: 0 }} aria-labelledby="why-heading">
