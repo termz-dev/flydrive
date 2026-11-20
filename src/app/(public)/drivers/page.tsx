@@ -18,7 +18,7 @@ export default function DriversPage() {
         lead="Flydrive matches professional drivers with customers who need a driver for a set period — in their own car or one we arrange — from a half-day to a month or more."
       >
         <div className="button-row">
-          <Link className="button button-amber" href="/drivers/apply">
+          <Link className="button" href="/drivers/apply">
             How to apply
           </Link>
         </div>

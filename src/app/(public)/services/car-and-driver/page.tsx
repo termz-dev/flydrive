@@ -127,7 +127,10 @@ export default function CarAndDriverPage() {
                   "Conferences",
                   "Interstate travel",
                 ].map((t) => (
-                  <li key={t} style={{ background: "#1b2b42", color: "#dce3ec" }}>
+                  <li
+                    key={t}
+                    style={{ background: "#1e293b", color: "#e2e8f0", borderColor: "#334155" }}
+                  >
                     {t}
                   </li>
                 ))}

@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div className="footer-about">
           <p className="footer-brand">{SITE_NAME}</p>
           <p>{SITE_TAGLINE}</p>
-          <Link href="/contact" className="button button-amber button-small">
+          <Link href="/contact" className="button button-small">
             Contact us
           </Link>
         </div>

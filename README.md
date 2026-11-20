@@ -19,6 +19,8 @@ pnpm lint && pnpm typecheck && pnpm format:check && pnpm test
 pnpm build && pnpm test:routes   # starts the built app and checks every route
 ```
 
+Visual design: tokens from `docs/design/DESIGN_SYSTEM.md` (ADR 0003), layouts from the Flydrive Claude Design canvas.
+
 Current build status: Phase 2 (foundation and multi-page shell). Public pages are live content; customer, driver and operations portals are skeletons that show "sign-in isn't available yet". See `docs/PHASE_02_REPORT.md`.
 
 ## Start here
