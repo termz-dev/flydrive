@@ -259,7 +259,7 @@ export default function HomePage() {
                 Trust &amp; safety
               </Link>
             </div>
-            <Photo name="driverWindow" sizes={HALF} />
+            <Photo name="womanDriver" sizes={HALF} />
           </div>
         </div>
       </section>

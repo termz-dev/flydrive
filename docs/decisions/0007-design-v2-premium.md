@@ -34,3 +34,8 @@ surfaces (`button-light`, `button-ghost-light`) and one outline variant (`button
 - `team.jpg` shows models, not Flydrive staff: replace it with a real team photo or another image.
 - Replace mockup-size photos with production originals if higher resolution is needed.
 - Fill the values in `src/content/site.ts` as they are approved.
+
+## Later change (20 Nov 2026)
+The home safety panel uses `woman-driver.jpg` (Pexels photo 6817008 by Gustavo Fring, Pexels
+licence) instead of `driver-window.jpg`, at the founder's request. Trust & safety keeps
+`driver-window.jpg`.

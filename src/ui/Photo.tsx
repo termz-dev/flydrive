@@ -22,6 +22,11 @@ export const PHOTOS = {
     alt: "A driver in a dark suit at the wheel of a black saloon",
     position: "65% 40%",
   },
+  womanDriver: {
+    src: "/images/woman-driver.jpg",
+    alt: "A smiling woman driving, hands on the steering wheel",
+    position: "18% 40%",
+  },
   family: {
     src: "/images/family.jpg",
     alt: "A smiling family in colourful Nigerian outfits walking hand in hand",
